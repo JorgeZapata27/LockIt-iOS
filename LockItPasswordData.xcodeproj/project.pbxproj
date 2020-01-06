@@ -28,7 +28,6 @@
 		7829EDB023A36C8400CC56DE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7829EDAF23A36C8400CC56DE /* UserService.swift */; };
 		782E5EA322A08C8F00F1456B /* AddedAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E5EA222A08C8F00F1456B /* AddedAccounts.swift */; };
 		782E5EA822A0940D00F1456B /* AddedAccountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E5EA722A0940D00F1456B /* AddedAccountsCell.swift */; };
-		782E5EAB22A1BB4C00F1456B /* UpdateAndModify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E5EAA22A1BB4C00F1456B /* UpdateAndModify.swift */; };
 		782E5EB222A2FDC600F1456B /* DataModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E5EB122A2FDC600F1456B /* DataModal.swift */; };
 		782E5EB622A30A7E00F1456B /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E5EB522A30A7E00F1456B /* MoreVC.swift */; };
 		782E5EBA22A4263400F1456B /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 782E5EB922A4263400F1456B /* Onboarding.storyboard */; };
@@ -38,7 +37,6 @@
 		782F43332274DBA100D32BBD /* AddInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F43322274DBA100D32BBD /* AddInfo.swift */; };
 		782F43362274FE0800D32BBD /* SocialMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F43352274FE0800D32BBD /* SocialMedia.swift */; };
 		782F433822751AE300D32BBD /* SocialMediaOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F433722751AE300D32BBD /* SocialMediaOptions.swift */; };
-		782F433C227522C100D32BBD /* BuyNSell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F433B227522C100D32BBD /* BuyNSell.swift */; };
 		782F433F227525E900D32BBD /* BuyNSellTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F433E227525E900D32BBD /* BuyNSellTableView.swift */; };
 		782F4343227537B700D32BBD /* SportsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F4342227537B700D32BBD /* SportsTableView.swift */; };
 		782F4345227537CB00D32BBD /* Sports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F4344227537CB00D32BBD /* Sports.swift */; };
@@ -51,6 +49,7 @@
 		785530B923A2CE830038C809 /* V3CellMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530B823A2CE830038C809 /* V3CellMain.swift */; };
 		785530BB23A2CFB90038C809 /* NewestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530BA23A2CFB90038C809 /* NewestCell.swift */; };
 		785530BD23A2D4A30038C809 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530BC23A2D4A30038C809 /* Post.swift */; };
+		78595D6223C3BCC5008EC65A /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78595D6123C3BCC5008EC65A /* EditProfileController.swift */; };
 		7866C1E5234A66B10075189A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E4234A66B10075189A /* TableViewController.swift */; };
 		7866C1E9234B0EA80075189A /* NAVV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E8234B0EA70075189A /* NAVV2.swift */; };
 		7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7889C2AD229DBFB8008DAAE4 /* TouchId.swift */; };
@@ -77,6 +76,7 @@
 		78DCBA0E237C675400F817A3 /* SettingsNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCBA0D237C675400F817A3 /* SettingsNavController.swift */; };
 		78FFEA5E237A8FD70036C173 /* AWController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFEA5D237A8FD70036C173 /* AWController.swift */; };
 		78FFEA60237A92C90036C173 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFEA5F237A92C90036C173 /* ContactsController.swift */; };
+		E834123D7CAAE5BF54C9C297 /* Pods_LockItStickerPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E5EF4B5B3D672A9CA1F711 /* Pods_LockItStickerPack.framework */; };
 		EBD6BAEAE0275D5288936022 /* Pods_LockItPasswordData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 628E87C460C01E91A8139BCA /* Pods_LockItPasswordData.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +115,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		14CA35CBE570E969921D2081 /* Pods-LockItStickerPack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockItStickerPack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockItStickerPack/Pods-LockItStickerPack.debug.xcconfig"; sourceTree = "<group>"; };
 		628E87C460C01E91A8139BCA /* Pods_LockItPasswordData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockItPasswordData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7819A9792355942B0003DFDC /* EmailUndPassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUndPassCell.swift; sourceTree = "<group>"; };
 		7819A99D235773920003DFDC /* LockItStickerPack.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockItStickerPack.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +139,6 @@
 		7829EDAF23A36C8400CC56DE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		782E5EA222A08C8F00F1456B /* AddedAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedAccounts.swift; sourceTree = "<group>"; };
 		782E5EA722A0940D00F1456B /* AddedAccountsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedAccountsCell.swift; sourceTree = "<group>"; };
-		782E5EAA22A1BB4C00F1456B /* UpdateAndModify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAndModify.swift; sourceTree = "<group>"; };
 		782E5EB122A2FDC600F1456B /* DataModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModal.swift; sourceTree = "<group>"; };
 		782E5EB522A30A7E00F1456B /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		782E5EB922A4263400F1456B /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -148,7 +148,6 @@
 		782F43322274DBA100D32BBD /* AddInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInfo.swift; sourceTree = "<group>"; };
 		782F43352274FE0800D32BBD /* SocialMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMedia.swift; sourceTree = "<group>"; };
 		782F433722751AE300D32BBD /* SocialMediaOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaOptions.swift; sourceTree = "<group>"; };
-		782F433B227522C100D32BBD /* BuyNSell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyNSell.swift; sourceTree = "<group>"; };
 		782F433E227525E900D32BBD /* BuyNSellTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyNSellTableView.swift; sourceTree = "<group>"; };
 		782F4342227537B700D32BBD /* SportsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsTableView.swift; sourceTree = "<group>"; };
 		782F4344227537CB00D32BBD /* Sports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports.swift; sourceTree = "<group>"; };
@@ -161,6 +160,7 @@
 		785530B823A2CE830038C809 /* V3CellMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3CellMain.swift; sourceTree = "<group>"; };
 		785530BA23A2CFB90038C809 /* NewestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestCell.swift; sourceTree = "<group>"; };
 		785530BC23A2D4A30038C809 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		78595D6123C3BCC5008EC65A /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		7866C1E4234A66B10075189A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		7866C1E8234B0EA70075189A /* NAVV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAVV2.swift; sourceTree = "<group>"; };
 		7889C2AD229DBFB8008DAAE4 /* TouchId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchId.swift; sourceTree = "<group>"; };
@@ -190,7 +190,9 @@
 		78DCBA0D237C675400F817A3 /* SettingsNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavController.swift; sourceTree = "<group>"; };
 		78FFEA5D237A8FD70036C173 /* AWController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWController.swift; sourceTree = "<group>"; };
 		78FFEA5F237A92C90036C173 /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
+		9BF4AAEF8F45DA4FF05281CF /* Pods-LockItStickerPack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockItStickerPack.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockItStickerPack/Pods-LockItStickerPack.release.xcconfig"; sourceTree = "<group>"; };
 		B9E4D15E02F0DE0BDCFCC65B /* Pods-LockItPasswordData.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockItPasswordData.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockItPasswordData/Pods-LockItPasswordData.release.xcconfig"; sourceTree = "<group>"; };
+		C8E5EF4B5B3D672A9CA1F711 /* Pods_LockItStickerPack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockItStickerPack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF1D01E578ABF0156235186B /* Pods-LockItPasswordData.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockItPasswordData.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockItPasswordData/Pods-LockItPasswordData.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E834123D7CAAE5BF54C9C297 /* Pods_LockItStickerPack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +221,8 @@
 			children = (
 				DF1D01E578ABF0156235186B /* Pods-LockItPasswordData.debug.xcconfig */,
 				B9E4D15E02F0DE0BDCFCC65B /* Pods-LockItPasswordData.release.xcconfig */,
+				14CA35CBE570E969921D2081 /* Pods-LockItStickerPack.debug.xcconfig */,
+				9BF4AAEF8F45DA4FF05281CF /* Pods-LockItStickerPack.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -294,7 +299,6 @@
 		782E5EA422A093D900F1456B /* Added Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				782E5EAA22A1BB4C00F1456B /* UpdateAndModify.swift */,
 				782E5EA222A08C8F00F1456B /* AddedAccounts.swift */,
 				782E5EA722A0940D00F1456B /* AddedAccountsCell.swift */,
 			);
@@ -355,7 +359,6 @@
 			isa = PBXGroup;
 			children = (
 				782F433E227525E900D32BBD /* BuyNSellTableView.swift */,
-				782F433B227522C100D32BBD /* BuyNSell.swift */,
 			);
 			path = "Buy & Sell";
 			sourceTree = "<group>";
@@ -393,6 +396,16 @@
 				78A0A56D2282381700D857EA /* CreditCards.swift */,
 			);
 			path = "Credit Cards";
+			sourceTree = "<group>";
+		};
+		78595D6023C3BC41008EC65A /* V1 */ = {
+			isa = PBXGroup;
+			children = (
+				78C62B81226FF5B600E9AE7D /* Login Or SignUp */,
+				78C62B6D226FF5B400E9AE7D /* Tab Bar Options */,
+				78BC7D04230ACFF2003A07A5 /* New Group */,
+			);
+			path = V1;
 			sourceTree = "<group>";
 		};
 		7866C1E3234A66880075189A /* V2 */ = {
@@ -435,6 +448,7 @@
 				78265B2823C0DADC00054C12 /* LAddAccountController.swift */,
 				78265B2723C0DADB00054C12 /* LHomeController.swift */,
 				78265B2523C0B1C300054C12 /* Authentication */,
+				78595D6123C3BCC5008EC65A /* EditProfileController.swift */,
 			);
 			name = V3;
 			path = V2/V3;
@@ -490,14 +504,12 @@
 			isa = PBXGroup;
 			children = (
 				78C62B7C226FF5B500E9AE7D /* AppDelegate.swift */,
-				78C62B81226FF5B600E9AE7D /* Login Or SignUp */,
-				78C62B6D226FF5B400E9AE7D /* Tab Bar Options */,
-				78BC7D04230ACFF2003A07A5 /* New Group */,
 				782E5EC122A55C2C00F1456B /* UIStoryboards */,
+				78595D6023C3BC41008EC65A /* V1 */,
 				7866C1E3234A66880075189A /* V2 */,
 				7890B03023AA97D30081679C /* V3 */,
-				7890B03523AAA9D00081679C /* LSignUpController.swift */,
 				78265B3623C1126300054C12 /* LMenuOptionCell.swift */,
+				7890B03523AAA9D00081679C /* LSignUpController.swift */,
 				782E5EBD22A4299C00F1456B /* Nav.swift */,
 				7866C1E8234B0EA70075189A /* NAVV2.swift */,
 				782E5EBF22A4315800F1456B /* NewViewController.swift */,
@@ -557,6 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				628E87C460C01E91A8139BCA /* Pods_LockItPasswordData.framework */,
+				C8E5EF4B5B3D672A9CA1F711 /* Pods_LockItStickerPack.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -568,6 +581,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7819A9A5235773960003DFDC /* Build configuration list for PBXNativeTarget "LockItStickerPack" */;
 			buildPhases = (
+				37A6F2A7B96099F772EBBE2D /* [CP] Check Pods Manifest.lock */,
 				7819A99B235773920003DFDC /* Resources */,
 				29381E2F2A1199C5B814D394 /* Frameworks */,
 			);
@@ -664,6 +678,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		37A6F2A7B96099F772EBBE2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LockItStickerPack-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		475FEFE30C4D3CE0F7F59DB8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -713,6 +749,7 @@
 				785530B923A2CE830038C809 /* V3CellMain.swift in Sources */,
 				7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */,
 				78C62B86226FF5B600E9AE7D /* OnlineAccounts.swift in Sources */,
+				78595D6223C3BCC5008EC65A /* EditProfileController.swift in Sources */,
 				782F43332274DBA100D32BBD /* AddInfo.swift in Sources */,
 				782F434A2275438600D32BBD /* TravelTableView.swift in Sources */,
 				781EC75223C3A233005759F7 /* AuthState.swift in Sources */,
@@ -721,7 +758,6 @@
 				78C62B94226FF5B600E9AE7D /* SignUp.swift in Sources */,
 				78FFEA60237A92C90036C173 /* ContactsController.swift in Sources */,
 				782F433822751AE300D32BBD /* SocialMediaOptions.swift in Sources */,
-				782E5EAB22A1BB4C00F1456B /* UpdateAndModify.swift in Sources */,
 				78A0A56E2282381700D857EA /* CreditCards.swift in Sources */,
 				78FFEA5E237A8FD70036C173 /* AWController.swift in Sources */,
 				782E5EBE22A4299C00F1456B /* Nav.swift in Sources */,
@@ -730,7 +766,6 @@
 				78ADDCCF227A56BD00AC0FCD /* AppleId.swift in Sources */,
 				78C62B84226FF5B600E9AE7D /* Settings.swift in Sources */,
 				78265B2A23C0DADC00054C12 /* LAddAccountController.swift in Sources */,
-				782F433C227522C100D32BBD /* BuyNSell.swift in Sources */,
 				782E5EB222A2FDC600F1456B /* DataModal.swift in Sources */,
 				785530BB23A2CFB90038C809 /* NewestCell.swift in Sources */,
 				78DCBA0E237C675400F817A3 /* SettingsNavController.swift in Sources */,
@@ -789,6 +824,7 @@
 /* Begin XCBuildConfiguration section */
 		7819A9A6235773960003DFDC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14CA35CBE570E969921D2081 /* Pods-LockItStickerPack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_STYLE = Automatic;
@@ -806,6 +842,7 @@
 		};
 		7819A9A7235773960003DFDC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BF4AAEF8F45DA4FF05281CF /* Pods-LockItStickerPack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_STYLE = Automatic;

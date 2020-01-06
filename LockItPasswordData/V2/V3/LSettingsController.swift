@@ -116,6 +116,7 @@ extension LSettingsController: UITableViewDelegate, UITableViewDataSource {
             print(LSocialOptions(rawValue: indexPath.row)?.description)
             if LSocialOptions(rawValue: indexPath.row)!.rawValue == 0 {
                 print("Edit")
+                self.navigationController?.pushViewController(EditProfileController(), animated: true)
             } else if LSocialOptions(rawValue: indexPath.row)!.rawValue == 1 {
                 print("Logout")
                 self.navigationController?.pushViewController(LLoginController(), animated: true)

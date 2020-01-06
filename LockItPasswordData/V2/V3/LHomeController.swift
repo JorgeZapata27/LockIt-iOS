@@ -11,11 +11,13 @@ class LHomeController : UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    view.backgroundColor =  .systemBackground
     configureNavigationBar()
     
   }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configureNavigationBar()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         configureNavigationBar()
