@@ -12,6 +12,7 @@ class LHomeController : UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureNavigationBar()
+    view.backgroundColor = .red
     
   }
     
@@ -25,9 +26,10 @@ class LHomeController : UIViewController {
 
   // MARK: - Handlers
 
-  @objc func handleMenuToggle() {
+  @objc func handleSettings() {
     print("Toggle Menu")
-    self.delegate?.handleMenuToggle(forMenuOption: nil)
+//    self.delegate?.handleMenuToggle(forMenuOption: nil)
+    self.navigationController?.pushViewController(LSettingsController(), animated: true)
   }
 
   @objc func handleAddTapped() {
@@ -39,8 +41,9 @@ class LHomeController : UIViewController {
     navigationController?.navigationBar.barTintColor = .systemBackground
     navigationItem.title = "Accounts"
     navigationController?.navigationBar.prefersLargeTitles = true
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "VISA-TEXT"), style: .plain, target: self, action: #selector(handleMenuToggle))
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "VISA-TEXT"), style: .plain, target: self, action: #selector(handleMenuToggle))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "online"), style: .plain, target: self, action: #selector(handleSettings))
+    navigationController?.navigationBar.isHidden = false
+    
   }
 
 }

@@ -49,8 +49,13 @@ class LSettingsController : UIViewController {
           configureTableView()
             view.backgroundColor = .systemBackground
             navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.isHidden = false
             navigationItem.title = "Settings"
       }
+    
+    @objc func add() {
+        print("dsjf;")
+    }
 
       // MARK: - Handlers
 
@@ -116,7 +121,7 @@ extension LSettingsController: UITableViewDelegate, UITableViewDataSource {
             print(LSocialOptions(rawValue: indexPath.row)?.description)
             if LSocialOptions(rawValue: indexPath.row)!.rawValue == 0 {
                 print("Edit")
-                self.navigationController?.pushViewController(EditProfileController(), animated: true)
+                self.navigationController?.pushViewController(LEditProfileController(), animated: true)
             } else if LSocialOptions(rawValue: indexPath.row)!.rawValue == 1 {
                 print("Logout")
                 self.navigationController?.pushViewController(LLoginController(), animated: true)

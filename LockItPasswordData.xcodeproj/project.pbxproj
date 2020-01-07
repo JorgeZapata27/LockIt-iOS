@@ -49,7 +49,7 @@
 		785530B923A2CE830038C809 /* V3CellMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530B823A2CE830038C809 /* V3CellMain.swift */; };
 		785530BB23A2CFB90038C809 /* NewestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530BA23A2CFB90038C809 /* NewestCell.swift */; };
 		785530BD23A2D4A30038C809 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530BC23A2D4A30038C809 /* Post.swift */; };
-		78595D6223C3BCC5008EC65A /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78595D6123C3BCC5008EC65A /* EditProfileController.swift */; };
+		78595D6223C3BCC5008EC65A /* LEditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78595D6123C3BCC5008EC65A /* LEditProfileController.swift */; };
 		7866C1E5234A66B10075189A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E4234A66B10075189A /* TableViewController.swift */; };
 		7866C1E9234B0EA80075189A /* NAVV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E8234B0EA70075189A /* NAVV2.swift */; };
 		7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7889C2AD229DBFB8008DAAE4 /* TouchId.swift */; };
@@ -160,7 +160,7 @@
 		785530B823A2CE830038C809 /* V3CellMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3CellMain.swift; sourceTree = "<group>"; };
 		785530BA23A2CFB90038C809 /* NewestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestCell.swift; sourceTree = "<group>"; };
 		785530BC23A2D4A30038C809 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		78595D6123C3BCC5008EC65A /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
+		78595D6123C3BCC5008EC65A /* LEditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEditProfileController.swift; sourceTree = "<group>"; };
 		7866C1E4234A66B10075189A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		7866C1E8234B0EA70075189A /* NAVV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAVV2.swift; sourceTree = "<group>"; };
 		7889C2AD229DBFB8008DAAE4 /* TouchId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchId.swift; sourceTree = "<group>"; };
@@ -448,7 +448,7 @@
 				78265B2823C0DADC00054C12 /* LAddAccountController.swift */,
 				78265B2723C0DADB00054C12 /* LHomeController.swift */,
 				78265B2523C0B1C300054C12 /* Authentication */,
-				78595D6123C3BCC5008EC65A /* EditProfileController.swift */,
+				78595D6123C3BCC5008EC65A /* LEditProfileController.swift */,
 			);
 			name = V3;
 			path = V2/V3;
@@ -749,7 +749,7 @@
 				785530B923A2CE830038C809 /* V3CellMain.swift in Sources */,
 				7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */,
 				78C62B86226FF5B600E9AE7D /* OnlineAccounts.swift in Sources */,
-				78595D6223C3BCC5008EC65A /* EditProfileController.swift in Sources */,
+				78595D6223C3BCC5008EC65A /* LEditProfileController.swift in Sources */,
 				782F43332274DBA100D32BBD /* AddInfo.swift in Sources */,
 				782F434A2275438600D32BBD /* TravelTableView.swift in Sources */,
 				781EC75223C3A233005759F7 /* AuthState.swift in Sources */,
