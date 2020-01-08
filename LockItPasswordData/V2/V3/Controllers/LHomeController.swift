@@ -12,7 +12,7 @@ class LHomeController : UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureNavigationBar()
-    view.backgroundColor = .red
+    view.backgroundColor = .systemBackground
     
   }
     
@@ -41,10 +41,16 @@ class LHomeController : UIViewController {
     navigationController?.navigationBar.barTintColor = .systemBackground
     navigationItem.title = "Accounts"
     navigationController?.navigationBar.prefersLargeTitles = true
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "online"), style: .plain, target: self, action: #selector(handleSettings))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .plain, target: self, action: #selector(handleSettings))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+    navigationItem.leftBarButtonItem?.tintColor = UIColor.systemYellow
+    navigationItem.rightBarButtonItem?.tintColor = UIColor.systemYellow
     navigationController?.navigationBar.isHidden = false
     navigationItem.hidesBackButton = true
-    
   }
+    
+    @objc func add() {
+        print("Add")
+    }
 
 }

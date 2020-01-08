@@ -52,6 +52,16 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
       label.textColor = UIColor.label
       return label
     }()
+    
+    let emailButton : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Change", for: .normal)
+        btn.setTitleColor(UIColor.systemYellow, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        btn.contentHorizontalAlignment = .right
+        btn.addTarget(self, action: #selector(changeEmail), for: .touchUpInside)
+        return btn
+    }()
 
     let dividerView1 : UIView = {
       let view = UIView()
@@ -73,6 +83,17 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
       label.textColor = UIColor.label
       return label
     }()
+    
+    let phoneButton : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Change", for: .normal)
+        btn.setTitleColor(UIColor.systemYellow, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        btn.contentHorizontalAlignment = .right
+//        btn.addTarget(self, action: #selector(changePhone), for: .touchUpInside)
+        return btn
+    }()
+    
 
     let dividerView2 : UIView = {
       let view = UIView()
@@ -93,6 +114,16 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
       label.text = "Germany"
       label.textColor = UIColor.label
       return label
+    }()
+    
+    let countryButton : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Change", for: .normal)
+        btn.setTitleColor(UIColor.systemYellow, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        btn.contentHorizontalAlignment = .right
+//        btn.addTarget(self, action: #selector(changeCountry), for: .touchUpInside)
+        return btn
     }()
 
     let dividerView3 : UIView = {
@@ -115,6 +146,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     // MARK: - Helper Functions
 
     func configureViewComponents() {
+        profileImageView.layer.cornerRadius = 10
         view.backgroundColor = UIColor.systemBackground
         navigationController?.navigationBar.isHidden = false
 
@@ -126,6 +158,16 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
 
     func constraintsForView() {
+        
+        var countries: [String] = []
+
+        for code in NSLocale.isoCountryCodes  {
+            let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
+            let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
+            countries.append(name)
+        }
+
+        print(countries)
         
         view.addSubview(profileImageView)
         profileImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
@@ -140,6 +182,9 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
 
         view.addSubview(emailLabel)
         emailLabel.anchor(top: emailPlaceholder.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 25)
+        
+        view.addSubview(emailButton)
+        emailButton.anchor(top: emailPlaceholder.topAnchor, left: view.leftAnchor, bottom: emailLabel.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
 
         view.addSubview(dividerView1)
         dividerView1.anchor(top: emailLabel.bottomAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: ((view.frame.width) - 10), height: 2)
@@ -149,6 +194,9 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
 
         view.addSubview(phoneLabel)
         phoneLabel.anchor(top: phonePlaceholder.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 25)
+        
+        view.addSubview(phoneButton)
+        phoneButton.anchor(top: dividerView1.bottomAnchor, left: view.leftAnchor, bottom: phoneLabel.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
 
         view.addSubview(dividerView2)
         dividerView2.anchor(top: phoneLabel.bottomAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: ((view.frame.width) - 10), height: 2)
@@ -158,6 +206,9 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
 
         view.addSubview(countryLabel)
         countryLabel.anchor(top: countryPlaceholder.bottomAnchor, left: view.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: view.frame.width, height: 25)
+        
+        view.addSubview(countryButton)
+        countryButton.anchor(top: dividerView2.bottomAnchor, left: view.leftAnchor, bottom: countryLabel.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
 
         view.addSubview(dividerView3)
         dividerView3.anchor(top: countryLabel.bottomAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: ((view.frame.width) - 10), height: 2)
@@ -168,6 +219,12 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     @objc func changeImage() {
         self.present(imagePicker, animated: true, completion: nil)
     }
+    
+    @objc func changeEmail() {
+        print("Changed Email")
+    }
+    
+    // MARK: - Delegates
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)

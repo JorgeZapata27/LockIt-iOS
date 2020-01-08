@@ -51,6 +51,7 @@ class LSettingsController : UIViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.isHidden = false
             navigationItem.title = "Settings"
+        navigationController?.navigationBar.tintColor = UIColor.systemYellow
       }
     
     @objc func add() {

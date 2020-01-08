@@ -17,7 +17,6 @@
 		78265B2A23C0DADC00054C12 /* LAddAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78265B2823C0DADC00054C12 /* LAddAccountController.swift */; };
 		78265B2E23C0DC3C00054C12 /* LMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78265B2C23C0DC3C00054C12 /* LMenuController.swift */; };
 		78265B2F23C0DC3C00054C12 /* LContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78265B2D23C0DC3C00054C12 /* LContainerController.swift */; };
-		78265B3123C1119000054C12 /* LExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78265B3023C1119000054C12 /* LExtensions.swift */; };
 		78265B3323C1125E00054C12 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78265B3223C1125E00054C12 /* UserInfoHeader.swift */; };
 		78265B3723C1126300054C12 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78265B3523C1126300054C12 /* SettingsCell.swift */; };
 		78265B3823C1126300054C12 /* LMenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78265B3623C1126300054C12 /* LMenuOptionCell.swift */; };
@@ -52,6 +51,7 @@
 		78595D6223C3BCC5008EC65A /* LEditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78595D6123C3BCC5008EC65A /* LEditProfileController.swift */; };
 		7866C1E5234A66B10075189A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E4234A66B10075189A /* TableViewController.swift */; };
 		7866C1E9234B0EA80075189A /* NAVV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E8234B0EA70075189A /* NAVV2.swift */; };
+		786B282923C670DB0048287A /* LExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786B282823C670DB0048287A /* LExtensions.swift */; };
 		7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7889C2AD229DBFB8008DAAE4 /* TouchId.swift */; };
 		7890B03623AAA9D00081679C /* LSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7890B03523AAA9D00081679C /* LSignUpController.swift */; };
 		789E7A3E2294222700650475 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789E7A3D2294222700650475 /* BankAccount.swift */; };
@@ -129,7 +129,6 @@
 		78265B2823C0DADC00054C12 /* LAddAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LAddAccountController.swift; sourceTree = "<group>"; };
 		78265B2C23C0DC3C00054C12 /* LMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMenuController.swift; sourceTree = "<group>"; };
 		78265B2D23C0DC3C00054C12 /* LContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LContainerController.swift; sourceTree = "<group>"; };
-		78265B3023C1119000054C12 /* LExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LExtensions.swift; path = ../../../../../../../../../Downloads/LExtensions.swift; sourceTree = "<group>"; };
 		78265B3223C1125E00054C12 /* UserInfoHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
 		78265B3523C1126300054C12 /* SettingsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		78265B3623C1126300054C12 /* LMenuOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LMenuOptionCell.swift; sourceTree = "<group>"; };
@@ -163,6 +162,7 @@
 		78595D6123C3BCC5008EC65A /* LEditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEditProfileController.swift; sourceTree = "<group>"; };
 		7866C1E4234A66B10075189A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		7866C1E8234B0EA70075189A /* NAVV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAVV2.swift; sourceTree = "<group>"; };
+		786B282823C670DB0048287A /* LExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LExtensions.swift; sourceTree = "<group>"; };
 		7889C2AD229DBFB8008DAAE4 /* TouchId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchId.swift; sourceTree = "<group>"; };
 		7890B03523AAA9D00081679C /* LSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSignUpController.swift; sourceTree = "<group>"; };
 		789E7A3D2294222700650475 /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
@@ -245,23 +245,6 @@
 			path = SignInWithAppleUIKitHelpers;
 			sourceTree = "<group>";
 		};
-		78265B2523C0B1C300054C12 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				78265B2623C0B1C400054C12 /* LLoginController.swift */,
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
-		78265B2B23C0DC3C00054C12 /* Side Bar */ = {
-			isa = PBXGroup;
-			children = (
-				78265B2C23C0DC3C00054C12 /* LMenuController.swift */,
-				78265B2D23C0DC3C00054C12 /* LContainerController.swift */,
-			);
-			path = "Side Bar";
-			sourceTree = "<group>";
-		};
 		78265B3423C1126300054C12 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +256,7 @@
 		78265B3923C1128F00054C12 /* Helper Functions */ = {
 			isa = PBXGroup;
 			children = (
+				786B282823C670DB0048287A /* LExtensions.swift */,
 				781EC74F23C3A233005759F7 /* SignInWithAppleUIKitHelpers */,
 				78265B3B23C1128F00054C12 /* Side Bar */,
 			);
@@ -428,6 +412,29 @@
 			path = V2;
 			sourceTree = "<group>";
 		};
+		786B282423C670810048287A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				78265B3223C1125E00054C12 /* UserInfoHeader.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		786B282A23C671240048287A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				78265B2C23C0DC3C00054C12 /* LMenuController.swift */,
+				78265B2D23C0DC3C00054C12 /* LContainerController.swift */,
+				78265B2823C0DADC00054C12 /* LAddAccountController.swift */,
+				78265B2723C0DADB00054C12 /* LHomeController.swift */,
+				78265B2623C0B1C400054C12 /* LLoginController.swift */,
+				78595D6123C3BCC5008EC65A /* LEditProfileController.swift */,
+				78265B3623C1126300054C12 /* LMenuOptionCell.swift */,
+				7890B03523AAA9D00081679C /* LSignUpController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		787159112284D343009D21DE /* Email */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,13 +449,8 @@
 				78265B4123C1133500054C12 /* LSettingsController.swift */,
 				78265B3923C1128F00054C12 /* Helper Functions */,
 				78265B3423C1126300054C12 /* Cells */,
-				78265B3223C1125E00054C12 /* UserInfoHeader.swift */,
-				78265B3023C1119000054C12 /* LExtensions.swift */,
-				78265B2B23C0DC3C00054C12 /* Side Bar */,
-				78265B2823C0DADC00054C12 /* LAddAccountController.swift */,
-				78265B2723C0DADB00054C12 /* LHomeController.swift */,
-				78265B2523C0B1C300054C12 /* Authentication */,
-				78595D6123C3BCC5008EC65A /* LEditProfileController.swift */,
+				786B282423C670810048287A /* Views */,
+				786B282A23C671240048287A /* Controllers */,
 			);
 			name = V3;
 			path = V2/V3;
@@ -508,8 +510,6 @@
 				78595D6023C3BC41008EC65A /* V1 */,
 				7866C1E3234A66880075189A /* V2 */,
 				7890B03023AA97D30081679C /* V3 */,
-				78265B3623C1126300054C12 /* LMenuOptionCell.swift */,
-				7890B03523AAA9D00081679C /* LSignUpController.swift */,
 				782E5EBD22A4299C00F1456B /* Nav.swift */,
 				7866C1E8234B0EA70075189A /* NAVV2.swift */,
 				782E5EBF22A4315800F1456B /* NewViewController.swift */,
@@ -776,7 +776,6 @@
 				7819A97A2355942B0003DFDC /* EmailUndPassCell.swift in Sources */,
 				782F4343227537B700D32BBD /* SportsTableView.swift in Sources */,
 				782F434C2275E6DA00D32BBD /* BuzInessTableView.swift in Sources */,
-				78265B3123C1119000054C12 /* LExtensions.swift in Sources */,
 				782E5EA822A0940D00F1456B /* AddedAccountsCell.swift in Sources */,
 				78BC7D19230AD153003A07A5 /* Interest.swift in Sources */,
 				78265B4323C1138700054C12 /* LLoginController.swift in Sources */,
@@ -789,6 +788,7 @@
 				78265B2923C0DADC00054C12 /* LHomeController.swift in Sources */,
 				782F43482275436400D32BBD /* Travel.swift in Sources */,
 				78C62B8F226FF5B600E9AE7D /* AppDelegate.swift in Sources */,
+				786B282923C670DB0048287A /* LExtensions.swift in Sources */,
 				78265B4223C1133500054C12 /* LSettingsController.swift in Sources */,
 				78265B3F23C1128F00054C12 /* LMenuOption.swift in Sources */,
 				785530B723A2CC3C0038C809 /* AddAccountVC.swift in Sources */,
