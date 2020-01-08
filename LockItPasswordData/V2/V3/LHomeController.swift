@@ -41,8 +41,9 @@ class LHomeController : UIViewController {
     navigationController?.navigationBar.barTintColor = .systemBackground
     navigationItem.title = "Accounts"
     navigationController?.navigationBar.prefersLargeTitles = true
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "online"), style: .plain, target: self, action: #selector(handleSettings))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "online"), style: .plain, target: self, action: #selector(handleSettings))
     navigationController?.navigationBar.isHidden = false
+    navigationItem.hidesBackButton = true
     
   }
 

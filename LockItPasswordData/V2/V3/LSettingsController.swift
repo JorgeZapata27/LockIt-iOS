@@ -121,13 +121,27 @@ extension LSettingsController: UITableViewDelegate, UITableViewDataSource {
             print(LSocialOptions(rawValue: indexPath.row)?.description)
             if LSocialOptions(rawValue: indexPath.row)!.rawValue == 0 {
                 print("Edit")
-                self.navigationController?.pushViewController(LEditProfileController(), animated: true)
+                self.navigationController?.pushViewController(LEditProfile(), animated: true)
             } else if LSocialOptions(rawValue: indexPath.row)!.rawValue == 1 {
                 print("Logout")
-                self.navigationController?.pushViewController(LLoginController(), animated: true)
+                do {
+                    try Auth.auth().signOut()
+                    let controller = LLoginController()
+                    controller.modalPresentationStyle = .fullScreen
+                    present(controller, animated: true, completion: nil)
+                } catch let error {
+                    print(error)
+                }
             }
           case .Communications:
             print(LCommunicationOptions(rawValue: indexPath.row)?.description)
+            if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 0 {
+                print("Notifications")
+            } else if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 1 {
+                print("Emails")
+            } else if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 2 {
+                print("Report Crashes")
+            }
         }
       }
   }

@@ -117,10 +117,7 @@ class LLoginController : UIViewController, UITextFieldDelegate {
           super.viewDidAppear(animated)
           if let user = Auth.auth().currentUser {
             print("User Auth Auto Success")
-            guard let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController else { return }
-            guard let controller = navController.viewControllers[0] as? LHomeController else { return }
-            controller.configureNavigationBar()
-            self.present(LHomeController(), animated: true, completion: nil)
+            self.navigationController?.pushViewController(LHomeController(), animated: true)
           }
             
           darknlight()
