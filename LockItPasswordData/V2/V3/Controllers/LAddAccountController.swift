@@ -5,7 +5,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
 
   let appImageView : UIImageView = {
     let iv = UIImageView()
-    iv.image = UIImage(named: "AppIcon.png")
+    iv.image = UIImage(named: "blank-app")
     iv.contentMode = .scaleAspectFit
     iv.translatesAutoresizingMaskIntoConstraints = false
     return iv
@@ -14,7 +14,8 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
   let changeImageBtn : UIButton = {
     let btn = UIButton()
     btn.setTitle("Change Image", for: .normal)
-    btn.setTitleColor(UIColor.yellow, for: .normal)
+    btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+    btn.setTitleColor(UIColor.systemYellow, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
     return btn
   }()
@@ -30,7 +31,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     let tf = UITextField()
     tf.placeholder = "Account Name"
     tf.backgroundColor = .systemBackground
-    tf.textColor = .secondarySystemBackground
+    tf.textColor = .systemGray2
     tf.tintColor = .yellow
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
@@ -40,7 +41,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     let tf = UITextField()
     tf.placeholder = "Account Username"
     tf.backgroundColor = .systemBackground
-    tf.textColor = .secondarySystemBackground
+    tf.textColor = .systemGray2
     tf.tintColor = .yellow
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
@@ -50,7 +51,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     let tf = UITextField()
     tf.placeholder = "Account Password"
     tf.backgroundColor = .systemBackground
-    tf.textColor = .secondarySystemBackground
+    tf.textColor = .systemGray2
     tf.tintColor = .yellow
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
@@ -58,10 +59,11 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
 
   let addButton : UIButton = {
     let btn = UIButton()
-    btn.backgroundColor = .yellow
+    btn.backgroundColor = .systemYellow
     btn.setTitle("Add", for: .normal)
     btn.setTitleColor(.systemBackground, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
+    btn.layer.cornerRadius = btn.frame.height / 2
     return btn
   }()
 
@@ -77,16 +79,16 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     view.backgroundColor = .systemBackground
 
     view.addSubview(appImageView)
-    appImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+    appImageView.heightAnchor.constraint(equalToConstant: 90).isActive = true
     appImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-    appImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    appImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     appImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
 
     view.addSubview(changeImageBtn)
     changeImageBtn.widthAnchor.constraint(equalToConstant: 120).isActive = true
     changeImageBtn.heightAnchor.constraint(equalToConstant: 60).isActive = true
-    changeImageBtn.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    appImageView.topAnchor.constraint(equalTo: appImageView.bottomAnchor, constant: 10).isActive = true
+    changeImageBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    changeImageBtn.topAnchor.constraint(equalTo: appImageView.bottomAnchor, constant: 10).isActive = true
 
     view.addSubview(textfieldView)
     textfieldView.widthAnchor.constraint(equalToConstant: 200).isActive = true
@@ -115,9 +117,9 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
 
     view.addSubview(addButton)
     addButton.topAnchor.constraint(equalTo: textfieldView.bottomAnchor, constant: 100).isActive = true
-    addButton.heightAnchor.constraint(equalToConstant: 120).isActive = true
-    addButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
-    addButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    addButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    addButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+    addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
   }
 
   func openImagePicker() {
@@ -155,6 +157,17 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
 
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)
+  }
+
+  // Hides keyboard
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      self.view.endEditing(true)
+  }
+
+  // Return key
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return (true)
   }
 
 }

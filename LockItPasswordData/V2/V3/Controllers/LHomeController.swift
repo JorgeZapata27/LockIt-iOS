@@ -34,6 +34,7 @@ class LHomeController : UIViewController {
 
   @objc func handleAddTapped() {
     print("Toggle Custom Add. ")
+    self.navigationController?.pushViewController(LAddAccountController(), animated: true)
     // Perform Segue
   }
 
@@ -42,11 +43,12 @@ class LHomeController : UIViewController {
     navigationItem.title = "Accounts"
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingsIcon"), style: .plain, target: self, action: #selector(handleSettings))
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddTapped))
     navigationItem.leftBarButtonItem?.tintColor = UIColor.systemYellow
     navigationItem.rightBarButtonItem?.tintColor = UIColor.systemYellow
     navigationController?.navigationBar.isHidden = false
     navigationItem.hidesBackButton = true
+    navigationController?.navigationBar.tintColor = .systemYellow
   }
     
     @objc func add() {

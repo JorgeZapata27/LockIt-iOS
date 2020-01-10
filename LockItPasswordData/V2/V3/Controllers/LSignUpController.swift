@@ -17,6 +17,7 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
     // MARK: - Variables
 
     var imagePicker : UIImagePickerController!
+    var image : UIImage? = nil
 
     // MARK: - Properties
 
@@ -206,6 +207,7 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
         guard let password = passwordTextField.text else { return }
         guard let username = usernameTextField.text else { return }
         guard let image = logoImageView.image else { return }
+        guard let imageData = logoImageView.image?.jpegData(compressionQuality: 0.75) else { return }
 
         if email == "" || password == "" || username == "" {
           let alertController = UIAlertController(title: "Error Creating Account", message: "Your Request Was Denied Because One Of Your Text Fields Was Left Clear", preferredStyle: .alert)
@@ -215,46 +217,35 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
         } else {
           Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error == nil && user != nil {
-
-              // 1. Upload the profile image to Firebase Storage.
-                self.uploadProfileImage(self.logoImageView.image!) { url in
-                if url != nil {
-                  let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                  changeRequest?.displayName = username
-                  changeRequest?.photoURL = url
-                  changeRequest?.commitChanges { error in
-                    if error == nil {
-                      print("User Profile Name Changed")
-                      self.saveProfile(username: username, profileImageURL: url!) { success in
-                        if success {
-                          print("SUCESS")
-                          print("Move To Tabbar")
-                        }
-                      }
-                      //print("TRANS")
-                    } else {
-                      print("User Profile Name Could Not Be Changed")
-                      let alertController = UIAlertController(title: "Error Creating Account", message: "\(error!.localizedDescription)", preferredStyle: .alert)
-                      let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
-                      alertController.addAction(okay)
-                      self.present(alertController, animated: true, completion: nil)
+                print("lksadjfdalskjfals;dfjkas;ldfjkalsdkj")
+                var dict : Dictionary<String, Any> = [
+                    "uid" : Auth.auth().currentUser?.uid,
+                    "email" : Auth.auth().currentUser?.email,
+                    "profileImageURL" : ""
+                ]
+                let storageRef = Storage.storage().reference(forURL: "gs://fir-demo-2c741.appspot.com")
+                let storageProfileRef = storageRef.child("Profile").child(Auth.auth().currentUser!.uid)
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpg"
+                storageProfileRef.putData(imageData, metadata: metadata) { (storageMetadata, errir) in
+                    if error != nil {
+                        print(error?.localizedDescription)
+                        return
                     }
-                  }
-                } else {
-                  // Error
+                    storageProfileRef.downloadURL { (url, error) in
+                        if let metaImageURL = url?.absoluteString {
+                            print(metaImageURL)
+                            dict["profileImageURL"] = metaImageURL
+
+                            Database.database().reference().child("Users").child((user?.user.uid)!).updateChildValues(dict) { (error, ref) in
+                                if error == nil {
+                                    print("Done. ")
+                                    self.navigationController?.pushViewController(LHomeController(), animated: true)
+                                }
+                            }
+                        }
+                    }
                 }
-              }
-
-              // 2. Save the profile data to Firebase Database.
-
-              // 3. Dismiss the view.
-
-            } else {
-              print("User Creating Is Unsuccessful.")
-              let alertController = UIAlertController(title: "Error Creating Account", message: "\(error!.localizedDescription)", preferredStyle: .alert)
-              let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
-              alertController.addAction(okay)
-              self.present(alertController, animated: true, completion: nil)
             }
           }
         }
@@ -278,19 +269,6 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
             }
 
     // MARK: - API
-
-    func saveProfile(username : String, profileImageURL : URL, completion: @escaping ((_ success : Bool) -> ())) {
-      guard let uid = Auth.auth().currentUser?.uid else { return }
-      let userObject = [
-        "username" : username,
-        "photoURL" : profileImageURL.absoluteString
-      ] as [String : Any]
-      let databaseRef = Database.database().reference().child("users/profile/\(uid)")
-      databaseRef.setValue(userObject) { error, ref in
-        completion(error == nil)
-      }
-      print("Move To Tabbar")
-    }
 
     func createUser(withEmail email: String, password: String, username: String) {
         print("SIGNED UP")
@@ -372,8 +350,10 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info : [UIImagePickerController.InfoKey : Any]) {
       if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+        self.image = editedImage
         self.logoImageView.image = editedImage
       } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        self.image = originalImage
         self.logoImageView.image = originalImage
       }
       dismiss(animated: true, completion: nil)
@@ -381,7 +361,7 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
     
     func uploadProfileImage(_ image : UIImage, completion: @escaping ((_ url : URL?) -> ())) {
       guard let uid = Auth.auth().currentUser?.uid else { return }
-      let storageRef = Storage.storage().reference().child("user/\(uid)")
+      let storageRef = Storage.storage().reference().child("\(uid)")
       guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
       let metaData = StorageMetadata()
       metaData.contentType = "img/jpg"
@@ -389,8 +369,6 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
         if error == nil, metaData != nil {
           // Success
           print("good")
-            let nextVC = LHomeController()
-            self.present(nextVC, animated: true, completion: nil)
         } else {
           // Fail
           print("bad")
