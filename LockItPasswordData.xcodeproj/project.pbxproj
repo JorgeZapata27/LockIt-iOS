@@ -423,6 +423,7 @@
 		786B282A23C671240048287A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				78265B4123C1133500054C12 /* LSettingsController.swift */,
 				78265B2C23C0DC3C00054C12 /* LMenuController.swift */,
 				78265B2D23C0DC3C00054C12 /* LContainerController.swift */,
 				78265B2823C0DADC00054C12 /* LAddAccountController.swift */,
@@ -446,7 +447,6 @@
 		7890B03023AA97D30081679C /* V3 */ = {
 			isa = PBXGroup;
 			children = (
-				78265B4123C1133500054C12 /* LSettingsController.swift */,
 				78265B3923C1128F00054C12 /* Helper Functions */,
 				78265B3423C1126300054C12 /* Cells */,
 				786B282423C670810048287A /* Views */,

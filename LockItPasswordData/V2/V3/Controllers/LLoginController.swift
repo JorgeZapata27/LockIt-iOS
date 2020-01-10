@@ -36,6 +36,7 @@ class LLoginController : UIViewController, UITextFieldDelegate {
         lazy var emailTextField: UITextField = {
             let tf = UITextField()
             tf.placeholder = "Email"
+            tf.keyboardType = UIKeyboardType.emailAddress
             tf.isSecureTextEntry = false
             return tf
         }()

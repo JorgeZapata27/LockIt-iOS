@@ -17,6 +17,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
     btn.setTitleColor(UIColor.systemYellow, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
+    btn.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
     return btn
   }()
 
@@ -122,7 +123,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
   }
 
-  func openImagePicker() {
+  @objc func openImagePicker() {
     let imagePickerController = UIImagePickerController()
     imagePickerController.delegate = self
     imagePickerController.allowsEditing = true
