@@ -54,6 +54,7 @@
 		786B282923C670DB0048287A /* LExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786B282823C670DB0048287A /* LExtensions.swift */; };
 		7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7889C2AD229DBFB8008DAAE4 /* TouchId.swift */; };
 		7890B03623AAA9D00081679C /* LSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7890B03523AAA9D00081679C /* LSignUpController.swift */; };
+		789C996D23CA1A26004ABF3A /* LChangeEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789C996C23CA1A26004ABF3A /* LChangeEmailController.swift */; };
 		789E7A3E2294222700650475 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789E7A3D2294222700650475 /* BankAccount.swift */; };
 		78A0A56E2282381700D857EA /* CreditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0A56D2282381700D857EA /* CreditCards.swift */; };
 		78AB03D42350EDC9007EF1AC /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AB03D32350EDC8007EF1AC /* AccountController.swift */; };
@@ -165,6 +166,7 @@
 		786B282823C670DB0048287A /* LExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LExtensions.swift; sourceTree = "<group>"; };
 		7889C2AD229DBFB8008DAAE4 /* TouchId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchId.swift; sourceTree = "<group>"; };
 		7890B03523AAA9D00081679C /* LSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSignUpController.swift; sourceTree = "<group>"; };
+		789C996C23CA1A26004ABF3A /* LChangeEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LChangeEmailController.swift; sourceTree = "<group>"; };
 		789E7A3D2294222700650475 /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
 		78A0A56D2282381700D857EA /* CreditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCards.swift; sourceTree = "<group>"; };
 		78AB03D32350EDC8007EF1AC /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				78265B2723C0DADB00054C12 /* LHomeController.swift */,
 				78265B2623C0B1C400054C12 /* LLoginController.swift */,
 				78595D6123C3BCC5008EC65A /* LEditProfileController.swift */,
+				789C996C23CA1A26004ABF3A /* LChangeEmailController.swift */,
 				78265B3623C1126300054C12 /* LMenuOptionCell.swift */,
 				7890B03523AAA9D00081679C /* LSignUpController.swift */,
 			);
@@ -776,6 +779,7 @@
 				7819A97A2355942B0003DFDC /* EmailUndPassCell.swift in Sources */,
 				782F4343227537B700D32BBD /* SportsTableView.swift in Sources */,
 				782F434C2275E6DA00D32BBD /* BuzInessTableView.swift in Sources */,
+				789C996D23CA1A26004ABF3A /* LChangeEmailController.swift in Sources */,
 				782E5EA822A0940D00F1456B /* AddedAccountsCell.swift in Sources */,
 				78BC7D19230AD153003A07A5 /* Interest.swift in Sources */,
 				78265B4323C1138700054C12 /* LLoginController.swift in Sources */,

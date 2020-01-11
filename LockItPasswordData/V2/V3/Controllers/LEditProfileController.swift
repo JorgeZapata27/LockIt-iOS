@@ -222,6 +222,8 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     @objc func changeEmail() {
         print("Changed Email")
+        self.navigationController?.pushViewController(LChangeEmailControllerrrr(), animated: true)
+        
     }
     
     // MARK: - Delegates

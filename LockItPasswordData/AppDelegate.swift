@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.makeKeyAndVisible()
-        let navController = UINavigationController(rootViewController: LLoginController())
+        let navController = UINavigationController(rootViewController: LChangeEmailControllerrrr())
         window?.rootViewController = navController
         
 //        window = UIWindow()
