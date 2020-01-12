@@ -90,7 +90,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
         btn.setTitleColor(UIColor.systemYellow, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.contentHorizontalAlignment = .right
-//        btn.addTarget(self, action: #selector(changePhone), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(changeNumber), for: .touchUpInside)
         return btn
     }()
     
@@ -122,7 +122,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
         btn.setTitleColor(UIColor.systemYellow, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.contentHorizontalAlignment = .right
-//        btn.addTarget(self, action: #selector(changeCountry), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(changeCountry), for: .touchUpInside)
         return btn
     }()
 
@@ -158,17 +158,6 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
 
     func constraintsForView() {
-        
-        var countries: [String] = []
-
-        for code in NSLocale.isoCountryCodes  {
-            let id = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: code])
-            let name = NSLocale(localeIdentifier: "en_UK").displayName(forKey: NSLocale.Key.identifier, value: id) ?? "Country not found for code: \(code)"
-            countries.append(name)
-        }
-
-        print(countries)
-        
         view.addSubview(profileImageView)
         profileImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -223,7 +212,14 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     @objc func changeEmail() {
         print("Changed Email")
         self.navigationController?.pushViewController(LChangeEmailControllerrrr(), animated: true)
-        
+    }
+    
+    @objc func changeNumber() {
+        self.navigationController?.pushViewController(LChangePhoneNumberController(), animated: true)
+    }
+    
+    @objc func changeCountry() {
+        self.navigationController?.pushViewController(LChangeCountryController(), animated: true)
     }
     
     // MARK: - Delegates
