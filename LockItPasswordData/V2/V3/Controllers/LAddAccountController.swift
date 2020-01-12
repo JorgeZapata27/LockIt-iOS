@@ -1,4 +1,8 @@
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 import Foundation
 
 class LAddAccountController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -65,8 +69,14 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     btn.setTitleColor(.systemBackground, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
     btn.layer.cornerRadius = btn.frame.height / 2
+    btn.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
     return btn
   }()
+    
+    
+    var databaseRefer : DatabaseReference!
+    var databaseHandle : DatabaseHandle!
+    var profoleName = ""
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -117,6 +127,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     accountPasswordTF.heightAnchor.constraint(equalToConstant: 63).isActive = true
 
     view.addSubview(addButton)
+    addButton.layer.cornerRadius = addButton.frame.height / 2
     addButton.topAnchor.constraint(equalTo: textfieldView.bottomAnchor, constant: 100).isActive = true
     addButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     addButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
@@ -170,5 +181,35 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
       textField.resignFirstResponder()
       return (true)
   }
+    
+    @objc func addTapped() {
+        let uid = Auth.auth().currentUser!.uid
+        let ref = Database.database().reference()
+        let storage = Storage.storage().reference(forURL: "gs://fir-demo-2c741.appspot.com")
+        let key = ref.child("Posts").childByAutoId().key
+        let imageRef = storage.child("Posts").child(uid).child("\(key).jpg")
+        databaseRefer = Database.database().reference()
+        let userID = Auth.auth().currentUser!.uid
+        let data = self.appImageView.image!.jpegData(compressionQuality: 0.9)
+        let uploadTask = imageRef.putData(data!, metadata: nil) { (metadata, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            }
+            imageRef.downloadURL { (url, error) in
+                if let url = url {
+                    let feed = ["userID" : uid,
+                                "pathToImage" : url.absoluteString,
+                                "accountName" : self.accountNameTF.text!,
+                                "accountUsername" : self.accountUsernameTF.text!,
+                                "accountPassword" : self.accountPasswordTF.text!,
+                                "postID" : key!] as [String : Any]
+                    let postFeed = ["\(key!)" : feed]
+                    ref.child("posts").updateChildValues(postFeed)
+                }
+            }
+        }
+        uploadTask.resume()
+    }
 
 }

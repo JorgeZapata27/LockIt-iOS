@@ -221,7 +221,8 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
                 var dict : Dictionary<String, Any> = [
                     "uid" : Auth.auth().currentUser?.uid,
                     "email" : Auth.auth().currentUser?.email,
-                    "profileImageURL" : ""
+                    "profileImageURL" : "",
+                    "name" : self.usernameTextField.text!
                 ]
                 let storageRef = Storage.storage().reference(forURL: "gs://fir-demo-2c741.appspot.com")
                 let storageProfileRef = storageRef.child("Profile").child(Auth.auth().currentUser!.uid)

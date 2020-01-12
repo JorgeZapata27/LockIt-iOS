@@ -14,6 +14,8 @@ import FirebaseAuth
 class UserInfoHeader: UIView {
 
     // MARK: - Properties
+    var databaseRefer : DatabaseReference!
+    var databaseHandle : DatabaseHandle!
 
     let profileImageView: UIImageView = {
         let iv = UIImageView()
@@ -27,6 +29,12 @@ class UserInfoHeader: UIView {
 
     let usernameLabel: UILabel = {
         let label = UILabel()
+//        databaseHandle = databaseRefer.child(email).child("AddedAccounts").child(accountName).child(saveAsPass).observe(.childAdded, with: { (data) in
+//            let name : String = (data.value as? String)!
+//            self.ArrayForInfo.append(name)
+//            self.passwordText.text = name
+//            debugPrint(name)
+//        })
         label.text = "Jorge Zapata"
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +54,9 @@ class UserInfoHeader: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        // Firebase Init ( Read )
+        databaseRefer = Database.database().reference()
 
         let profileImageDimension: CGFloat = 60
 
