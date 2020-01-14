@@ -78,6 +78,7 @@
 		78C62B9622708A3200E9AE7D /* ReportAnError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C62B9522708A3200E9AE7D /* ReportAnError.swift */; };
 		78DCBA0E237C675400F817A3 /* SettingsNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCBA0D237C675400F817A3 /* SettingsNavController.swift */; };
 		78E836E123CCF30400BB74C3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E836E023CCF30400BB74C3 /* CustomTableViewCell.swift */; };
+		78E836E523CE1B9E00BB74C3 /* BandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E836E423CE1B9E00BB74C3 /* BandCell.swift */; };
 		78FFEA5E237A8FD70036C173 /* AWController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFEA5D237A8FD70036C173 /* AWController.swift */; };
 		78FFEA60237A92C90036C173 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFEA5F237A92C90036C173 /* ContactsController.swift */; };
 		E834123D7CAAE5BF54C9C297 /* Pods_LockItStickerPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E5EF4B5B3D672A9CA1F711 /* Pods_LockItStickerPack.framework */; };
@@ -196,6 +197,7 @@
 		78C62B9522708A3200E9AE7D /* ReportAnError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnError.swift; sourceTree = "<group>"; };
 		78DCBA0D237C675400F817A3 /* SettingsNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavController.swift; sourceTree = "<group>"; };
 		78E836E023CCF30400BB74C3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		78E836E423CE1B9E00BB74C3 /* BandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandCell.swift; sourceTree = "<group>"; };
 		78FFEA5D237A8FD70036C173 /* AWController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWController.swift; sourceTree = "<group>"; };
 		78FFEA5F237A92C90036C173 /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
 		9BF4AAEF8F45DA4FF05281CF /* Pods-LockItStickerPack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockItStickerPack.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockItStickerPack/Pods-LockItStickerPack.release.xcconfig"; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				78265B2D23C0DC3C00054C12 /* LContainerController.swift */,
 				78265B2823C0DADC00054C12 /* LAddAccountController.swift */,
 				78265B2723C0DADB00054C12 /* LHomeController.swift */,
+				78E836E423CE1B9E00BB74C3 /* BandCell.swift */,
 				78E836E023CCF30400BB74C3 /* CustomTableViewCell.swift */,
 				78265B2623C0B1C400054C12 /* LLoginController.swift */,
 				78595D6123C3BCC5008EC65A /* LEditProfileController.swift */,
@@ -818,6 +821,7 @@
 				78265B3823C1126300054C12 /* LMenuOptionCell.swift in Sources */,
 				782E5EBC22A426B200F1456B /* Continue.swift in Sources */,
 				789E7A3E2294222700650475 /* BankAccount.swift in Sources */,
+				78E836E523CE1B9E00BB74C3 /* BandCell.swift in Sources */,
 				78265B2F23C0DC3C00054C12 /* LContainerController.swift in Sources */,
 				7890B03623AAA9D00081679C /* LSignUpController.swift in Sources */,
 				7829EDB023A36C8400CC56DE /* UserService.swift in Sources */,

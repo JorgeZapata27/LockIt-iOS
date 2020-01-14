@@ -25,7 +25,7 @@ class LSettingsController : UIViewController {
           super.viewDidLoad()
 
           // Functions To Throw
-          configureUI()
+          configureeUI()
       }
 
       // MARK: - Helper Functions
@@ -45,7 +45,7 @@ class LSettingsController : UIViewController {
           tableView.tableFooterView = UIView()
       }
 
-      func configureUI() {
+      func configureeUI() {
           configureTableView()
             view.backgroundColor = .systemBackground
             navigationController?.navigationBar.prefersLargeTitles = true
