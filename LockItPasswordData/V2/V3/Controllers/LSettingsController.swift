@@ -140,8 +140,10 @@ extension LSettingsController: UITableViewDelegate, UITableViewDataSource {
                 print("Notifications")
             } else if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 1 {
                 print("Emails")
+                self.navigationController?.pushViewController(LAboutDeveloper(), animated: true)
             } else if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 2 {
-                print("Report Crashes")
+                print("Report Error")
+                self.navigationController?.pushViewController(LReportErrorController(), animated: true)
             }
         }
       }

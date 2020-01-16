@@ -19,16 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        
+        let userID = Auth.auth().currentUser!.uid
+        Database.database().reference().child("Users").child(userID).child("name").observe(.childAdded, with: { (data) in
+            let name : String = (data.value as! String)
+            debugPrint(name)
+            print("dsafjsdlfkj")
+        })
+        
         window = UIWindow()
         window?.makeKeyAndVisible()
         let navController = UINavigationController(rootViewController: LLoginController())
         window?.rootViewController = navController
-        
-//        window = UIWindow()
-//        window?.makeKeyAndVisible()
-//        let navController = UINavigationController(rootViewController: HomeController())
-//        navController.navigationBar.barStyle = .black
-//        window?.rootViewController = navController
 
         
         return true

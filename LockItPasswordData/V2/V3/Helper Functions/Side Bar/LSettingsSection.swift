@@ -45,8 +45,8 @@ enum LCommunicationOptions : Int, CaseIterable, LSectionType {
   var description : String {
     switch self {
       case .notifications : return "Notifications"
-      case .email : return "Email"
-      case .reportCrashes : return "Report Crashes"
+      case .email : return "About The Developer"
+      case .reportCrashes : return "Report Error"
     }
   }
 }

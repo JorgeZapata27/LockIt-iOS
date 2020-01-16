@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7811F81F23D0D25A004D58FA /* LReportErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7811F81E23D0D25A004D58FA /* LReportErrorController.swift */; };
+		7811F82123D0D6B8004D58FA /* LAboutDeveloper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7811F82023D0D6B8004D58FA /* LAboutDeveloper.swift */; };
 		7819A97A2355942B0003DFDC /* EmailUndPassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819A9792355942B0003DFDC /* EmailUndPassCell.swift */; };
 		7819A9A0235773960003DFDC /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7819A99F235773960003DFDC /* Stickers.xcassets */; };
 		7819A9A4235773960003DFDC /* LockItStickerPack.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7819A99D235773920003DFDC /* LockItStickerPack.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -79,6 +81,7 @@
 		78DCBA0E237C675400F817A3 /* SettingsNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DCBA0D237C675400F817A3 /* SettingsNavController.swift */; };
 		78E836E123CCF30400BB74C3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E836E023CCF30400BB74C3 /* CustomTableViewCell.swift */; };
 		78E836E523CE1B9E00BB74C3 /* BandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E836E423CE1B9E00BB74C3 /* BandCell.swift */; };
+		78E836EB23CEEF3800BB74C3 /* MyVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E836EA23CEEF3800BB74C3 /* MyVariables.swift */; };
 		78FFEA5E237A8FD70036C173 /* AWController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFEA5D237A8FD70036C173 /* AWController.swift */; };
 		78FFEA60237A92C90036C173 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FFEA5F237A92C90036C173 /* ContactsController.swift */; };
 		E834123D7CAAE5BF54C9C297 /* Pods_LockItStickerPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E5EF4B5B3D672A9CA1F711 /* Pods_LockItStickerPack.framework */; };
@@ -122,6 +125,8 @@
 /* Begin PBXFileReference section */
 		14CA35CBE570E969921D2081 /* Pods-LockItStickerPack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockItStickerPack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockItStickerPack/Pods-LockItStickerPack.debug.xcconfig"; sourceTree = "<group>"; };
 		628E87C460C01E91A8139BCA /* Pods_LockItPasswordData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockItPasswordData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7811F81E23D0D25A004D58FA /* LReportErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LReportErrorController.swift; sourceTree = "<group>"; };
+		7811F82023D0D6B8004D58FA /* LAboutDeveloper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAboutDeveloper.swift; sourceTree = "<group>"; };
 		7819A9792355942B0003DFDC /* EmailUndPassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUndPassCell.swift; sourceTree = "<group>"; };
 		7819A99D235773920003DFDC /* LockItStickerPack.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockItStickerPack.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7819A99F235773960003DFDC /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
@@ -198,6 +203,7 @@
 		78DCBA0D237C675400F817A3 /* SettingsNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavController.swift; sourceTree = "<group>"; };
 		78E836E023CCF30400BB74C3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		78E836E423CE1B9E00BB74C3 /* BandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandCell.swift; sourceTree = "<group>"; };
+		78E836EA23CEEF3800BB74C3 /* MyVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVariables.swift; sourceTree = "<group>"; };
 		78FFEA5D237A8FD70036C173 /* AWController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWController.swift; sourceTree = "<group>"; };
 		78FFEA5F237A92C90036C173 /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
 		9BF4AAEF8F45DA4FF05281CF /* Pods-LockItStickerPack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockItStickerPack.release.xcconfig"; path = "Pods/Target Support Files/Pods-LockItStickerPack/Pods-LockItStickerPack.release.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +275,7 @@
 				786B282823C670DB0048287A /* LExtensions.swift */,
 				781EC74F23C3A233005759F7 /* SignInWithAppleUIKitHelpers */,
 				78265B3B23C1128F00054C12 /* Side Bar */,
+				78E836EA23CEEF3800BB74C3 /* MyVariables.swift */,
 			);
 			path = "Helper Functions";
 			sourceTree = "<group>";
@@ -447,6 +454,8 @@
 				78658AB823CB968600C7DF90 /* LChangeCountryController.swift */,
 				78265B3623C1126300054C12 /* LMenuOptionCell.swift */,
 				7890B03523AAA9D00081679C /* LSignUpController.swift */,
+				7811F81E23D0D25A004D58FA /* LReportErrorController.swift */,
+				7811F82023D0D6B8004D58FA /* LAboutDeveloper.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -781,6 +790,7 @@
 				78ADDCCF227A56BD00AC0FCD /* AppleId.swift in Sources */,
 				78C62B84226FF5B600E9AE7D /* Settings.swift in Sources */,
 				78265B2A23C0DADC00054C12 /* LAddAccountController.swift in Sources */,
+				7811F81F23D0D25A004D58FA /* LReportErrorController.swift in Sources */,
 				782E5EB222A2FDC600F1456B /* DataModal.swift in Sources */,
 				785530BB23A2CFB90038C809 /* NewestCell.swift in Sources */,
 				78DCBA0E237C675400F817A3 /* SettingsNavController.swift in Sources */,
@@ -797,6 +807,7 @@
 				782E5EA822A0940D00F1456B /* AddedAccountsCell.swift in Sources */,
 				78BC7D19230AD153003A07A5 /* Interest.swift in Sources */,
 				78265B4323C1138700054C12 /* LLoginController.swift in Sources */,
+				7811F82123D0D6B8004D58FA /* LAboutDeveloper.swift in Sources */,
 				7866C1E5234A66B10075189A /* TableViewController.swift in Sources */,
 				78ADDCD1227A56CA00AC0FCD /* Email.swift in Sources */,
 				7819A9A9235986570003DFDC /* StartUpController.swift in Sources */,
@@ -808,6 +819,7 @@
 				78C62B8F226FF5B600E9AE7D /* AppDelegate.swift in Sources */,
 				786B282923C670DB0048287A /* LExtensions.swift in Sources */,
 				78265B4223C1133500054C12 /* LSettingsController.swift in Sources */,
+				78E836EB23CEEF3800BB74C3 /* MyVariables.swift in Sources */,
 				78265B3F23C1128F00054C12 /* LMenuOption.swift in Sources */,
 				78658AB723CB961A00C7DF90 /* LChangePhoneNumberController.swift in Sources */,
 				785530B723A2CC3C0038C809 /* AddAccountVC.swift in Sources */,
