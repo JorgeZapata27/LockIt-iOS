@@ -18,6 +18,7 @@ class LChangeEmailControllerrrr : UIViewController {
     tf.backgroundColor = .systemBackground
     tf.tintColor = .yellow
     tf.clearButtonMode = UITextField.ViewMode.always
+    tf.keyboardType = .emailAddress
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
   }()
@@ -28,6 +29,7 @@ class LChangeEmailControllerrrr : UIViewController {
       button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
       button.tintColor = .systemYellow
       button.setTitleColor(.systemYellow, for: .normal)
+      button.addTarget(self, action: #selector(change), for: .touchUpInside)
       button.layer.cornerRadius = 5
       return button
   }()
@@ -63,6 +65,13 @@ class LChangeEmailControllerrrr : UIViewController {
       textField.resignFirstResponder()
       return (true)
   }
+    
+    @objc func change() {
+        if accountNameTF.text != "" {
+            //
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 
   
 }

@@ -48,8 +48,8 @@ class LReportErrorController : UIViewController {
     let tf = UITextField()
     tf.placeholder = "Please submit your error here"
     tf.backgroundColor = .systemBackground
-    tf.textColor = .systemGray2
-    tf.tintColor = .yellow
+    tf.textColor = .label
+    tf.tintColor = .systemYellow
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
   }()
@@ -97,9 +97,10 @@ class LReportErrorController : UIViewController {
   @objc func btnSelected() {
     Database.database().reference().child("Error Responses").child("V3").childByAutoId().setValue(errorTF.text!)
     errorTF.text = ""
-    self.dismiss(animated: true, completion: nil)
     let alertController = UIAlertController(title: "Success", message: "Your message has been sent. Thank you for your feedback!", preferredStyle: .alert)
-    alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+    alertController.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: { (action) in
+        self.navigationController?.popViewController(animated: true)
+    }))
     self.present(alertController, animated: true, completion: nil)
   }
 

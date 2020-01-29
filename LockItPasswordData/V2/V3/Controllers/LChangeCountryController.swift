@@ -31,6 +31,7 @@ class LChangeCountryController : UIViewController, UIPickerViewDelegate, UIPicke
       button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
       button.tintColor = .systemYellow
       button.setTitleColor(.systemYellow, for: .normal)
+      button.addTarget(self, action: #selector(change), for: .touchUpInside)
       button.layer.cornerRadius = 5
       return button
   }()
@@ -95,6 +96,13 @@ class LChangeCountryController : UIViewController, UIPickerViewDelegate, UIPicke
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         accountNameTF.text = countries[row]
+    }
+    
+    @objc func change() {
+        if accountNameTF.text != "" {
+            //
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
   

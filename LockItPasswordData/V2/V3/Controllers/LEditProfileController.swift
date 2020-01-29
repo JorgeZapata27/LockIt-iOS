@@ -19,8 +19,9 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     let profileImageView : UIImageView = {
         let piv = UIImageView()
         piv.image = UIImage(named: "jorge")
-        piv.contentMode = .scaleAspectFit
+        piv.contentMode = .scaleAspectFill
         piv.layer.cornerRadius = piv.frame.height / 2
+        piv.layer.masksToBounds = true
         return piv
     }()
 
@@ -146,7 +147,8 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     // MARK: - Helper Functions
 
     func configureViewComponents() {
-        profileImageView.layer.cornerRadius = 10
+        profileImageView.layer.cornerRadius = 50
+        profileImageView.layer.masksToBounds = true
         view.backgroundColor = UIColor.systemBackground
         navigationController?.navigationBar.isHidden = false
 

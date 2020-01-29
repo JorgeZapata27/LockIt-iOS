@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LChangePhoneNumberController : UIViewController {
+class LChangePhoneNumberController : UIViewController, UITextFieldDelegate {
 
   let accountNameTF : UITextField = {
     let tf = UITextField()
@@ -16,6 +16,7 @@ class LChangePhoneNumberController : UIViewController {
     tf.text = "+49 (171) 496 - 4250"
     tf.textColor = .label
     tf.backgroundColor = .systemBackground
+    tf.keyboardType = .decimalPad
     tf.tintColor = .yellow
     tf.clearButtonMode = UITextField.ViewMode.always
     tf.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +27,7 @@ class LChangePhoneNumberController : UIViewController {
       let button = UIButton(type: .system)
       button.setTitle("Change", for: .normal)
       button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+      button.addTarget(self, action: #selector(change), for: .touchUpInside)
       button.tintColor = .systemYellow
       button.setTitleColor(.systemYellow, for: .normal)
       button.layer.cornerRadius = 5
@@ -34,10 +36,53 @@ class LChangePhoneNumberController : UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    accountNameTF.delegate = self
 
     // Functions To Throw
     confugreUI()
 
+  }
+  
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+      var fullString = textField.text ?? ""
+      fullString.append(string)
+      if range.length == 1 {
+          textField.text = format(phoneNumber: fullString, shouldRemoveLastDigit: true)
+      } else {
+          textField.text = format(phoneNumber: fullString)
+      }
+      return false
+  }
+  
+  func format(phoneNumber: String, shouldRemoveLastDigit: Bool = false) -> String {
+      guard !phoneNumber.isEmpty else { return "" }
+      guard let regex = try? NSRegularExpression(pattern: "[\\s-\\(\\)]", options: .caseInsensitive) else { return "" }
+      let r = NSString(string: phoneNumber).range(of: phoneNumber)
+      var number = regex.stringByReplacingMatches(in: phoneNumber, options: .init(rawValue: 0), range: r, withTemplate: "")
+
+      if number.count > 10 {
+          let tenthDigitIndex = number.index(number.startIndex, offsetBy: 10)
+          number = String(number[number.startIndex..<tenthDigitIndex])
+      }
+
+      if shouldRemoveLastDigit {
+          let end = number.index(number.startIndex, offsetBy: number.count-1)
+          number = String(number[number.startIndex..<end])
+      }
+
+      if number.count < 7 {
+          let end = number.index(number.startIndex, offsetBy: number.count)
+          let range = number.startIndex..<end
+          number = number.replacingOccurrences(of: "(\\d{3})(\\d+)", with: "($1) $2", options: .regularExpression, range: range)
+
+      } else {
+          let end = number.index(number.startIndex, offsetBy: number.count)
+          let range = number.startIndex..<end
+          number = number.replacingOccurrences(of: "(\\d{3})(\\d{3})(\\d+)", with: "($1) $2-$3", options: .regularExpression, range: range)
+      }
+
+      return number
   }
 
   func confugreUI() {
@@ -62,6 +107,13 @@ class LChangePhoneNumberController : UIViewController {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
       textField.resignFirstResponder()
       return (true)
+  }
+  
+  @objc func change() {
+      if accountNameTF.text != "" {
+          //
+          self.navigationController?.popViewController(animated: true)
+      }
   }
 
   
