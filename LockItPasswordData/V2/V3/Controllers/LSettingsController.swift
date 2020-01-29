@@ -96,7 +96,7 @@ extension LSettingsController: UITableViewDelegate, UITableViewDataSource {
 
           return view
       }
-
+ 
       func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
           return 40
       }
@@ -137,10 +137,13 @@ extension LSettingsController: UITableViewDelegate, UITableViewDataSource {
           case .Communications:
             print(LCommunicationOptions(rawValue: indexPath.row)?.description)
             if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 0 {
-                print("Notifications")
+                print("Old Info")
+                let alertController = UIAlertController(title: "Unable To Open", message: "Please Contact Us For More Information About What Account Your Are Looking For. We Recommend You Updating Your Information To Our Newer System. Email LockItInformation@gmail.com For More Help", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
             } else if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 1 {
-                print("Emails")
-                self.navigationController?.pushViewController(LAboutDeveloper(), animated: true)
+                print("Report Error")
+                self.navigationController?.pushViewController(LReportErrorController(), animated: true)
             } else if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 2 {
                 print("Report Error")
                 self.navigationController?.pushViewController(LReportErrorController(), animated: true)

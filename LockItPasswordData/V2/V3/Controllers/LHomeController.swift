@@ -30,17 +30,20 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
 
       override func viewDidLoad() {
         super.viewDidLoad()
+        askPlease()
         configureNavigationBar()
         view.backgroundColor = .systemBackground
         configureUI()
       }
 
         override func viewDidAppear(_ animated: Bool) {
+            askPlease()
             configureNavigationBar()
             configureUI()
         }
 
         override func viewWillAppear(_ animated: Bool) {
+            askPlease()
             configureNavigationBar()
             configureUI()
         }
@@ -94,7 +97,9 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: bandCellID, for: indexPath) as! BandCell
             cell.pictureImageView.image = UIImage(named: bandsArray[indexPath.item].image!)
-            cell.pictureImageView.layer.cornerRadius = 5
+            cell.pictureImageView.layer.cornerRadius = 10
+            cell.pictureImageView.contentMode = .scaleAspectFill
+            cell.pictureImageView.layer.masksToBounds = true
             cell.backgroundColor = .systemBackground
             cell.titleLabel.text = bandsArray[indexPath.item].title
             return cell
@@ -102,6 +107,32 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
 
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 60
+        }
+        
+        func askPlease() {
+            
+            if traitCollection.userInterfaceStyle == .dark {
+                print("Dark mode")
+            } else {
+                print("Light mode")
+                let Dark = UserDefaults.standard.bool(forKey: "DarkMode")
+                if Dark == true {
+                    print("No Action")
+                } else {
+                    print("Should Change")
+                    let alert = UIAlertController(title: "Dark Mode Reccomended", message: "Light Mode Works, But We Reccomend Using Dark Mode To Experience LockIt Fully!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Stay", style: .default) { (action) in
+                        UserDefaults.standard.set(true, forKey: "DarkMode")
+                    })
+                    alert.addAction(UIAlertAction(title: "Change", style: .default) { (action) in
+                        UserDefaults.standard.set(true, forKey: "DarkMode")
+                        if let url = URL(string: "https://support.apple.com/en-us/HT210332") {
+                            UIApplication.shared.open(url)
+                        }
+                    })
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
 
 }

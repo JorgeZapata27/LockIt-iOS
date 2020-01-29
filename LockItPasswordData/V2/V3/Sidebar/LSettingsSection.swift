@@ -30,22 +30,20 @@ enum LSocialOptions : Int, CaseIterable, LSectionType {
 }
 
 enum LCommunicationOptions : Int, CaseIterable, LSectionType {
+    
   case notifications
-  case email
   case reportCrashes
 
   var containsSwitch : Bool {
     switch self {
       case .notifications: return true
-      case .email: return true
       case .reportCrashes: return true
     }
   }
 
   var description : String {
     switch self {
-      case .notifications : return "Notifications"
-      case .email : return "About The Developer"
+      case .notifications : return "Old Info"
       case .reportCrashes : return "Report Error"
     }
   }

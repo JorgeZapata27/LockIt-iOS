@@ -22,7 +22,6 @@ class BandCell : UITableViewCell {
       let iv = UIImageView()
       iv.contentMode = .scaleAspectFit
       iv.backgroundColor = .clear
-      iv.layer.cornerRadius = 5
       iv.translatesAutoresizingMaskIntoConstraints = false
       return iv
   }()

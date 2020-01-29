@@ -286,5 +286,4 @@ class LLoginController : UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return (true)
     }
-
 }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7811F81F23D0D25A004D58FA /* LReportErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7811F81E23D0D25A004D58FA /* LReportErrorController.swift */; };
-		7811F82123D0D6B8004D58FA /* LAboutDeveloper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7811F82023D0D6B8004D58FA /* LAboutDeveloper.swift */; };
 		7819A97A2355942B0003DFDC /* EmailUndPassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7819A9792355942B0003DFDC /* EmailUndPassCell.swift */; };
 		7819A9A0235773960003DFDC /* Stickers.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7819A99F235773960003DFDC /* Stickers.xcassets */; };
 		7819A9A4235773960003DFDC /* LockItStickerPack.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7819A99D235773920003DFDC /* LockItStickerPack.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -126,7 +125,6 @@
 		14CA35CBE570E969921D2081 /* Pods-LockItStickerPack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LockItStickerPack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LockItStickerPack/Pods-LockItStickerPack.debug.xcconfig"; sourceTree = "<group>"; };
 		628E87C460C01E91A8139BCA /* Pods_LockItPasswordData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LockItPasswordData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7811F81E23D0D25A004D58FA /* LReportErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LReportErrorController.swift; sourceTree = "<group>"; };
-		7811F82023D0D6B8004D58FA /* LAboutDeveloper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAboutDeveloper.swift; sourceTree = "<group>"; };
 		7819A9792355942B0003DFDC /* EmailUndPassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailUndPassCell.swift; sourceTree = "<group>"; };
 		7819A99D235773920003DFDC /* LockItStickerPack.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockItStickerPack.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7819A99F235773960003DFDC /* Stickers.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Stickers.xcassets; sourceTree = "<group>"; };
@@ -264,6 +262,7 @@
 		78265B3423C1126300054C12 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				78265B3C23C1128F00054C12 /* LMenuOption.swift */,
 				78265B3523C1126300054C12 /* SettingsCell.swift */,
 			);
 			path = Cells;
@@ -274,19 +273,9 @@
 			children = (
 				786B282823C670DB0048287A /* LExtensions.swift */,
 				781EC74F23C3A233005759F7 /* SignInWithAppleUIKitHelpers */,
-				78265B3B23C1128F00054C12 /* Side Bar */,
 				78E836EA23CEEF3800BB74C3 /* MyVariables.swift */,
 			);
 			path = "Helper Functions";
-			sourceTree = "<group>";
-		};
-		78265B3B23C1128F00054C12 /* Side Bar */ = {
-			isa = PBXGroup;
-			children = (
-				78265B3C23C1128F00054C12 /* LMenuOption.swift */,
-				78265B3D23C1128F00054C12 /* LSettingsSection.swift */,
-			);
-			path = "Side Bar";
 			sourceTree = "<group>";
 		};
 		782E5EA122A08C7200F1456B /* iPhone Password */ = {
@@ -455,7 +444,6 @@
 				78265B3623C1126300054C12 /* LMenuOptionCell.swift */,
 				7890B03523AAA9D00081679C /* LSignUpController.swift */,
 				7811F81E23D0D25A004D58FA /* LReportErrorController.swift */,
-				7811F82023D0D6B8004D58FA /* LAboutDeveloper.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -471,6 +459,7 @@
 		7890B03023AA97D30081679C /* V3 */ = {
 			isa = PBXGroup;
 			children = (
+				7898EA0B23E1FA160015DADF /* Sidebar */,
 				78265B3923C1128F00054C12 /* Helper Functions */,
 				78265B3423C1126300054C12 /* Cells */,
 				786B282423C670810048287A /* Views */,
@@ -478,6 +467,14 @@
 			);
 			name = V3;
 			path = V2/V3;
+			sourceTree = "<group>";
+		};
+		7898EA0B23E1FA160015DADF /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				78265B3D23C1128F00054C12 /* LSettingsSection.swift */,
+			);
+			path = Sidebar;
 			sourceTree = "<group>";
 		};
 		78ADDCCD227A56AA00AC0FCD /* Defaults */ = {
@@ -807,7 +804,6 @@
 				782E5EA822A0940D00F1456B /* AddedAccountsCell.swift in Sources */,
 				78BC7D19230AD153003A07A5 /* Interest.swift in Sources */,
 				78265B4323C1138700054C12 /* LLoginController.swift in Sources */,
-				7811F82123D0D6B8004D58FA /* LAboutDeveloper.swift in Sources */,
 				7866C1E5234A66B10075189A /* TableViewController.swift in Sources */,
 				78ADDCD1227A56CA00AC0FCD /* Email.swift in Sources */,
 				7819A9A9235986570003DFDC /* StartUpController.swift in Sources */,

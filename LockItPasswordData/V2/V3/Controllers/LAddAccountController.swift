@@ -36,8 +36,8 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     let tf = UITextField()
     tf.placeholder = "Account Name"
     tf.backgroundColor = .systemBackground
-    tf.textColor = .systemGray2
-    tf.tintColor = .yellow
+    tf.textColor = .label
+    tf.tintColor = .systemYellow
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
   }()
@@ -46,8 +46,8 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     let tf = UITextField()
     tf.placeholder = "Account Username"
     tf.backgroundColor = .systemBackground
-    tf.textColor = .systemGray2
-    tf.tintColor = .yellow
+    tf.textColor = .label
+    tf.tintColor = .systemYellow
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
   }()
@@ -56,8 +56,8 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     let tf = UITextField()
     tf.placeholder = "Account Password"
     tf.backgroundColor = .systemBackground
-    tf.textColor = .systemGray2
-    tf.tintColor = .yellow
+    tf.textColor = .label
+    tf.tintColor = .systemYellow
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
   }()
@@ -69,6 +69,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     btn.setTitleColor(.systemBackground, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
     btn.layer.cornerRadius = btn.frame.height / 2
+    btn.layer.masksToBounds = true
     btn.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
     return btn
   }()
