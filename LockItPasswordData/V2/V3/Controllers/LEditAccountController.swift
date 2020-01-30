@@ -14,7 +14,7 @@ class LEditAccountController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .green
+        navigationController?.navigationBar.backgroundColor = .darkGray
 
         // Do any additional setup after loading the view.
     }

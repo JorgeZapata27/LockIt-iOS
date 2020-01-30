@@ -74,7 +74,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         navigationController?.navigationBar.tintColor = .systemYellow
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .systemRed
+        navigationController?.navigationBar.backgroundColor = .systemBackground
       }
 
         @objc func add() {
@@ -103,6 +103,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.pictureImageView.contentMode = .scaleAspectFill
             cell.pictureImageView.layer.masksToBounds = true
             cell.backgroundColor = .systemBackground
+            cell.selectionStyle = .none
             cell.titleLabel.text = bandsArray[indexPath.item].title
             return cell
         }
