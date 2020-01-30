@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import AuthenticationServices
+import LocalAuthentication
 
 class LLoginController : UIViewController, UITextFieldDelegate {
 
@@ -117,10 +118,30 @@ class LLoginController : UIViewController, UITextFieldDelegate {
         override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
           if let user = Auth.auth().currentUser {
-            print("User Auth Auto Success")
-            self.navigationController?.pushViewController(LHomeController(), animated: true)
+
+            let context = LAContext()
+            var error: NSError?
+
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                let reason = "Authenticate with Touch ID"
+
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                    [unowned self] success, authenticationError in
+
+                    DispatchQueue.main.async {
+                        if success {
+                            self.pushToHome()
+                        } else {
+                            self.showAlertController("Touch ID Authentication Failed")
+                        }
+                    }
+                }
+            } else {
+                let ac = UIAlertController(title: "Touch ID not available", message: "Your device is not configured for Touch ID.", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                present(ac, animated: true)
+            }
           }
-            
           darknlight()
             
         }
@@ -285,5 +306,15 @@ class LLoginController : UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return (true)
+    }
+    
+    func showAlertController(_ message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func pushToHome() {
+        self.navigationController?.pushViewController(LHomeController(), animated: true)
     }
 }

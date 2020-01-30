@@ -15,7 +15,6 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         tv.backgroundColor = .systemBackground
         tv.separatorStyle = .singleLine
         tv.translatesAutoresizingMaskIntoConstraints = false
-        tv.allowsSelection = false
         return tv
       }()
 
@@ -73,6 +72,9 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         navigationController?.navigationBar.isHidden = false
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.tintColor = .systemYellow
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .systemRed
       }
 
         @objc func add() {
@@ -104,6 +106,10 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.titleLabel.text = bandsArray[indexPath.item].title
             return cell
         }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(LEditAccountController(), animated: true)
+    }
 
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 60
