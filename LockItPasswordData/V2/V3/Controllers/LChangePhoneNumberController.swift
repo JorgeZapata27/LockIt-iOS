@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class LChangePhoneNumberController : UIViewController, UITextFieldDelegate {
 
   let accountNameTF : UITextField = {
     let tf = UITextField()
     tf.placeholder = "Phone Number"
-    tf.text = "+49 (171) 496 - 4250"
     tf.textColor = .label
     tf.backgroundColor = .systemBackground
     tf.keyboardType = .decimalPad
@@ -41,6 +43,8 @@ class LChangePhoneNumberController : UIViewController, UITextFieldDelegate {
 
     // Functions To Throw
     confugreUI()
+    
+    Firebase()
 
   }
   
@@ -111,9 +115,24 @@ class LChangePhoneNumberController : UIViewController, UITextFieldDelegate {
   
   @objc func change() {
       if accountNameTF.text != "" {
-          //
-          self.navigationController?.popViewController(animated: true)
+          let uid = Auth.auth().currentUser!.uid
+          Database.database().reference().child("Users").child(uid).child("phoneNumber").setValue(accountNameTF.text!)
+          let alertController = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+          alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (alert) in
+              self.navigationController?.popViewController(animated: true)
+          }))
+          self.present(alertController, animated: true, completion: nil)
       }
+  }
+  
+  func Firebase() {
+      let uid = Auth.auth().currentUser!.uid
+      print(uid)
+      Database.database().reference().child("Users").child(uid).child("phoneNumber").observe(.value, with: { (data) in
+          let name : String = (data.value as? String)!
+          self.accountNameTF.text = name
+          debugPrint(name)
+      })
   }
 
   

@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -49,7 +53,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
 
     let emailLabel : UILabel = {
       let label = UILabel()
-      label.text = "jorgejaden@gmail.com"
+      label.text = "Unknown"
       label.textColor = UIColor.label
       return label
     }()
@@ -80,7 +84,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
 
     let phoneLabel : UILabel = {
       let label = UILabel()
-      label.text = "1714964250"
+      label.text = "Unknown"
       label.textColor = UIColor.label
       return label
     }()
@@ -112,7 +116,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
 
     let countryLabel : UILabel = {
       let label = UILabel()
-      label.text = "Germany"
+      label.text = "Unknown"
       label.textColor = UIColor.label
       return label
     }()
@@ -141,7 +145,18 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
         // Functions To Throw
         configureViewComponents()
         constraintsForView()
+        Firebase()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configureViewComponents()
+        Firebase()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureViewComponents()
+        Firebase()
     }
 
     // MARK: - Helper Functions
@@ -150,7 +165,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
         profileImageView.layer.cornerRadius = 50
         profileImageView.layer.masksToBounds = true
         view.backgroundColor = UIColor.systemBackground
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = false
 
         // Image Picker
         imagePicker = UIImagePickerController()
@@ -161,7 +176,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
 
     func constraintsForView() {
         view.addSubview(profileImageView)
-        profileImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
+        profileImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 70, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         view.addSubview(changePhotoButton)
@@ -229,14 +244,32 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info : [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.profileImageView.image = editedImage
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.profileImageView.image = originalImage
         }
-        dismiss(animated: true, completion: nil)
+        guard let imageData = profileImageView.image?.jpegData(compressionQuality: 0.75) else { return }
+        let storageRef = Storage.storage().reference(forURL: "gs://fir-demo-2c741.appspot.com")
+        let storageProfileRef = storageRef.child("Profile").child(Auth.auth().currentUser!.uid)
+        let metadata = StorageMetadata()
+        let uid = Auth.auth().currentUser!.uid
+        metadata.contentType = "image/jpg"
+        storageProfileRef.putData(imageData, metadata: metadata) { (storageMetadata, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            }
+            storageProfileRef.downloadURL { (url, error) in
+                if let metaImageURL = url?.absoluteString {
+                    print(metaImageURL)
+                    Database.database().reference().child("Users").child(uid).child("profileImageURL").setValue(metaImageURL)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
 
     // Hides keyboard
@@ -248,6 +281,30 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return (true)
+    }
+    
+    func Firebase() {
+        let uid = Auth.auth().currentUser!.uid
+        Database.database().reference().child("Users").child(uid).child("profileImageURL").observe(.value, with: { (data) in
+            let name : String = (data.value as? String)!
+            self.profileImageView.loadImageUsingCacheWithUrlString(urlString: name)
+            debugPrint(name)
+        })
+        Database.database().reference().child("Users").child(uid).child("email").observe(.value, with: { (data) in
+            let name : String = (data.value as? String)!
+            self.emailLabel.text = name
+            debugPrint(name)
+        })
+        Database.database().reference().child("Users").child(uid).child("Country").observe(.value, with: { (data) in
+            let name : String = (data.value as? String)!
+            self.countryLabel.text = name
+            debugPrint(name)
+        })
+        Database.database().reference().child("Users").child(uid).child("phoneNumber").observe(.value, with: { (data) in
+            let name : String = (data.value as? String)!
+            self.phoneLabel.text = name
+            debugPrint(name)
+        })
     }
 
 }

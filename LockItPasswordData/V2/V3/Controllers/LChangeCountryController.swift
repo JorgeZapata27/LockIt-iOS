@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseAnalytics
 
 class LChangeCountryController : UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
       
@@ -15,8 +19,6 @@ class LChangeCountryController : UIViewController, UIPickerViewDelegate, UIPicke
 
   let accountNameTF : UITextField = {
     let tf = UITextField()
-    tf.placeholder = "Phone Number"
-    tf.text = "Germany"
     tf.textColor = .label
     tf.backgroundColor = .systemBackground
     tf.tintColor = .yellow
@@ -50,7 +52,7 @@ class LChangeCountryController : UIViewController, UIPickerViewDelegate, UIPicke
     LpickerView.delegate = self
     LpickerView.dataSource = self
     
-    
+    Firebase()
 
     // Functions To Throw
     confugreUI()
@@ -100,9 +102,24 @@ class LChangeCountryController : UIViewController, UIPickerViewDelegate, UIPicke
     
     @objc func change() {
         if accountNameTF.text != "" {
-            //
-            self.navigationController?.popViewController(animated: true)
+            let uid = Auth.auth().currentUser!.uid
+            Database.database().reference().child("Users").child(uid).child("Country").setValue(accountNameTF.text!)
+            let alertController = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (alert) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func Firebase() {
+        let uid = Auth.auth().currentUser!.uid
+        print(uid)
+        Database.database().reference().child("Users").child(uid).child("Country").observe(.value, with: { (data) in
+            let name : String = (data.value as? String)!
+            self.accountNameTF.text = name
+            debugPrint(name)
+        })
     }
 
   

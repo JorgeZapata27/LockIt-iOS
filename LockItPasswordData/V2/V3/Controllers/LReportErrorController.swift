@@ -73,8 +73,17 @@ class LReportErrorController : UIViewController {
 
     // Initialize Things Here.
   }
+  
+  override func viewDidAppear(_ animated: Bool) {
+      configureUI()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+      configureUI()
+  }
 
   func configureUI() {
+        navigationController?.navigationBar.prefersLargeTitles = false
     view.backgroundColor = .systemBackground
     navigationController?.navigationItem.title = "Report Error"
     

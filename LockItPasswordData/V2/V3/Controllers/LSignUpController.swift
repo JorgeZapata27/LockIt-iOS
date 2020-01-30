@@ -23,7 +23,7 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
 
     let logoImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.image = UIImage(named: "Profile-Icon.png")
         iv.layer.cornerRadius = 5
@@ -222,7 +222,9 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
                     "uid" : Auth.auth().currentUser?.uid,
                     "email" : Auth.auth().currentUser?.email,
                     "profileImageURL" : "",
-                    "name" : self.usernameTextField.text!
+                    "name" : self.usernameTextField.text!,
+                    "Country" : "Unknown",
+                    "phoneNumber" : "Unknown"
                 ]
                 let storageRef = Storage.storage().reference(forURL: "gs://fir-demo-2c741.appspot.com")
                 let storageProfileRef = storageRef.child("Profile").child(Auth.auth().currentUser!.uid)

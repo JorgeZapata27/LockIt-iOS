@@ -57,6 +57,7 @@
 		786B282923C670DB0048287A /* LExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786B282823C670DB0048287A /* LExtensions.swift */; };
 		7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7889C2AD229DBFB8008DAAE4 /* TouchId.swift */; };
 		7890B03623AAA9D00081679C /* LSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7890B03523AAA9D00081679C /* LSignUpController.swift */; };
+		7897FAB023E350A700BE35BA /* UIIMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897FAAF23E350A700BE35BA /* UIIMage.swift */; };
 		789C996D23CA1A26004ABF3A /* LChangeEmailControllerrrr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789C996C23CA1A26004ABF3A /* LChangeEmailControllerrrr.swift */; };
 		789E7A3E2294222700650475 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789E7A3D2294222700650475 /* BankAccount.swift */; };
 		78A0A56E2282381700D857EA /* CreditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A0A56D2282381700D857EA /* CreditCards.swift */; };
@@ -176,6 +177,7 @@
 		786B282823C670DB0048287A /* LExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LExtensions.swift; sourceTree = "<group>"; };
 		7889C2AD229DBFB8008DAAE4 /* TouchId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchId.swift; sourceTree = "<group>"; };
 		7890B03523AAA9D00081679C /* LSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSignUpController.swift; sourceTree = "<group>"; };
+		7897FAAF23E350A700BE35BA /* UIIMage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIMage.swift; sourceTree = "<group>"; };
 		789C996C23CA1A26004ABF3A /* LChangeEmailControllerrrr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LChangeEmailControllerrrr.swift; sourceTree = "<group>"; };
 		789E7A3D2294222700650475 /* BankAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
 		78A0A56D2282381700D857EA /* CreditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCards.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				786B282823C670DB0048287A /* LExtensions.swift */,
 				781EC74F23C3A233005759F7 /* SignInWithAppleUIKitHelpers */,
 				78E836EA23CEEF3800BB74C3 /* MyVariables.swift */,
+				7897FAAF23E350A700BE35BA /* UIIMage.swift */,
 			);
 			path = "Helper Functions";
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				782F43362274FE0800D32BBD /* SocialMedia.swift in Sources */,
 				782E5EC022A4315800F1456B /* NewViewController.swift in Sources */,
 				782F433F227525E900D32BBD /* BuyNSellTableView.swift in Sources */,
+				7897FAB023E350A700BE35BA /* UIIMage.swift in Sources */,
 				78265B3823C1126300054C12 /* LMenuOptionCell.swift in Sources */,
 				782E5EBC22A426B200F1456B /* Continue.swift in Sources */,
 				789E7A3E2294222700650475 /* BankAccount.swift in Sources */,

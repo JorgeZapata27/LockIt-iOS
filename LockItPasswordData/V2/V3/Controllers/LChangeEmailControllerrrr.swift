@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class LChangeEmailControllerrrr : UIViewController {
 
   let accountNameTF : UITextField = {
     let tf = UITextField()
     tf.placeholder = "Email"
-    tf.text = "jorgejaden@gmail.com"
     tf.textColor = .label
     tf.backgroundColor = .systemBackground
     tf.tintColor = .yellow
@@ -39,6 +41,8 @@ class LChangeEmailControllerrrr : UIViewController {
 
     // Functions To Throw
     confugreUI()
+    
+    Firebase()
 
   }
 
@@ -65,13 +69,40 @@ class LChangeEmailControllerrrr : UIViewController {
       textField.resignFirstResponder()
       return (true)
   }
-    
-    @objc func change() {
-        if accountNameTF.text != "" {
-            //
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
+  
+  @objc func change() {
+      if accountNameTF.text != "" {
+          let uid = Auth.auth().currentUser!.uid
+          Database.database().reference().child("Users").child(uid).child("email").setValue(accountNameTF.text!)
+          let currentUser = Auth.auth().currentUser
+
+            currentUser?.updateEmail(to: accountNameTF.text!) { error in
+                if let error = error {
+                    print(error)
+                    let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (alert) in
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController = UIAlertController(title: "Success", message: "", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (alert) in
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+      }
+  }
+  
+  func Firebase() {
+      let uid = Auth.auth().currentUser!.uid
+      Database.database().reference().child("Users").child(uid).child("email").observe(.value, with: { (data) in
+          let name : String = (data.value as? String)!
+          self.accountNameTF.text = name
+          debugPrint(name)
+      })
+  }
 
   
 }

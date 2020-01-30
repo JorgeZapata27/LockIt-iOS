@@ -26,7 +26,36 @@ class LSettingsController : UIViewController {
 
           // Functions To Throw
           configureeUI()
+        Firebase()
       }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configureeUI()
+        Firebase()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureeUI()
+        Firebase()
+    }
+    
+    func Firebase() {
+        let uid = Auth.auth().currentUser!.uid
+        Database.database().reference().child("Users").child(uid).child("profileImageURL").observe(.value, with: { (data) in
+            let name : String = (data.value as? String)!
+            self.userInfoHeader.profileImageView.loadImageUsingCacheWithUrlString(urlString: name)
+        })
+        Database.database().reference().child("Users").child(uid).child("email").observe(.value, with: { (data) in
+            let name : String = (data.value as? String)!
+            self.userInfoHeader.emailLabel.text = name
+            debugPrint(name)
+        })
+        Database.database().reference().child("Users").child(uid).child("name").observe(.value, with: { (data) in
+            let name : String = (data.value as? String)!
+            self.userInfoHeader.usernameLabel.text = name
+            debugPrint(name)
+        })
+    }
 
       // MARK: - Helper Functions
 
