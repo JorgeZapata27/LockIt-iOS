@@ -9,6 +9,11 @@
 import UIKit
 
 class LEditAccountController: UIViewController {
+    
+    let segmentedControl : UISegmentedControl = {
+        let sc = UISegmentedControl()
+        return sc
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
