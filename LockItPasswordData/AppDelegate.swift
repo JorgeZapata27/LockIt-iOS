@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        let navController = UINavigationController(rootViewController: LLoginController())
+        let navController = UINavigationController(rootViewController: LHomeController())
         window?.rootViewController = navController
 
         

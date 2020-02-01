@@ -6,11 +6,13 @@ import FirebaseDatabase
 import Foundation
 
 class LAddAccountController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
   let appImageView : UIImageView = {
     let iv = UIImageView()
     iv.image = UIImage(named: "blank-app")
-    iv.contentMode = .scaleAspectFit
+    iv.contentMode = .scaleAspectFill
+    iv.layer.cornerRadius = iv.frame.height / 2
+    iv.layer.masksToBounds = true
     iv.translatesAutoresizingMaskIntoConstraints = false
     return iv
   }()
@@ -19,8 +21,9 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     let btn = UIButton()
     btn.setTitle("Change Image", for: .normal)
     btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-    btn.setTitleColor(UIColor.systemYellow, for: .normal)
+    btn.setTitleColor(.systemYellow, for: .normal)
     btn.translatesAutoresizingMaskIntoConstraints = false
+    btn.backgroundColor = .systemBackground
     btn.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
     return btn
   }()
@@ -88,11 +91,12 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
   }
 
   func confugreUI() {
+    
     view.backgroundColor = .systemBackground
 
     view.addSubview(appImageView)
     appImageView.heightAnchor.constraint(equalToConstant: 90).isActive = true
-    appImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+    appImageView.widthAnchor.constraint(equalToConstant: 90).isActive = true
     appImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     appImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
 
@@ -185,7 +189,45 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
   }
     
     @objc func addTapped() {
-        print("HALLO")
+        let uid = Auth.auth().currentUser!.uid
+        let ref = Database.database().reference()
+        let storage = Storage.storage().reference()
+        let key = ref.child("Posts").childByAutoId().key
+        let imageRef = storage.child("Posts").child(uid).child("\(key).jpg")
+        let data = self.appImageView.image!.jpegData(compressionQuality: 0.9)
+        databaseRefer = Database.database().reference()
+        let userID = Auth.auth().currentUser!.uid
+        databaseHandle = databaseRefer.child("Users").child(userID).child("name").observe(.value, with: { (data) in
+            print(String((data.value as? String)!))
+            let name = "\(String((data.value as? String)!))"
+        })
+        let imageName = NSUUID().uuidString
+        let Storageref = Storage.storage().reference().child("post_images").child("\(imageName).jpg")
+        if let uploadData = data {
+            Storageref.putData(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil{
+                    print("Failed to upload image:", error as Any)
+                    return
+                }
+                print(Storageref.downloadURL(completion: { (url, err) in
+                    if err != nil{
+                        print(err as Any)
+                        return
+                    }
+                    print("Good")
+                        if let imageUrl = url?.absoluteString {
+                            print(imageUrl)
+                                        let values = [
+                                            "postID" : key!,
+                                            "date" : "dateString",
+                                            "postImageView" : imageUrl] as [String : Any]
+                            
+                                        let postFeed = ["\(key!)" : values]
+                                        ref.child("Users").child(uid).child("my-posts").updateChildValues(postFeed)
+                        }
+                }))
+            }
+    }
     }
 
 }
