@@ -84,6 +84,22 @@ class LEditAccountController: UIViewController, UITextFieldDelegate {
         label.text = "Zapata"
         return label
     }()
+    
+    let copyUsername : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Copy", for: .normal)
+        btn.setTitleColor(.systemYellow, for: .normal)
+        btn.addTarget(self, action: #selector(copyUsernameL), for: .touchUpInside)
+        return btn
+    }()
+    
+    let copyPassword : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Copy", for: .normal)
+        btn.setTitleColor(.systemYellow, for: .normal)
+        btn.addTarget(self, action: #selector(copyPasswordL), for: .touchUpInside)
+        return btn
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,20 +214,17 @@ class LEditAccountController: UIViewController, UITextFieldDelegate {
         print("UPDATE")
         let alert = UIAlertController(title: "Success", message: "Your Account Has Been Updated", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func copyUsernameL() {
+        print("COPY U")
     }
-    */
+    
+    @objc func copyPasswordL() {
+        print("COPY P")
+    }
 
 }

@@ -8,6 +8,8 @@ struct Info {
 
 class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let refreshControl = UIRefreshControl()
+    
     var delegate : LHomeControllerDelegate?
 
       let tableView : UITableView = {
@@ -19,11 +21,8 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
       }()
 
       var bandCellID : String = "BandCellID"
-
-      var bandsArray = [Info(image: "Instagram", title: "Instagram"),
-                        Info(image: "Snapchat", title: "Snapchat"),
-                        Info(image: "Facebook", title: "Facebook"),
-                        Info(image: "WhatsApp", title: "WhatsApp")]
+    
+    var names = ["Instagram", "Snapchat", "Facebook", "WhatsApp"]
 
       // MARK: - Init
 
@@ -58,10 +57,16 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
       @objc func handleAddTapped() {
         print("Toggle Custom Add. ")
         self.navigationController?.pushViewController(LAddAccountController(), animated: true)
-        // Perform Segue
       }
+    
+    @objc func refreshControlSwipeUp() {
+        print("Updating")
+        self.refreshControl.endRefreshing()
+    }
 
       func configureNavigationBar() {
+        self.tableView.addSubview(refreshControl)
+        self.refreshControl.addTarget(self, action: #selector(refreshControlSwipeUp), for: .valueChanged)
         navigationController?.navigationBar.barTintColor = .systemBackground
         navigationItem.title = "Accounts"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -89,22 +94,18 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
           tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
           tableView.delegate = self
           tableView.dataSource = self
-          tableView.register(BandCell.self, forCellReuseIdentifier: bandCellID)
+          tableView.register(LHomeControllerCell.self, forCellReuseIdentifier: bandCellID)
         }
 
         func tableView(_ tableview: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return bandsArray.count
+            return names.count
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: bandCellID, for: indexPath) as! BandCell
-            cell.pictureImageView.image = UIImage(named: bandsArray[indexPath.item].image!)
-            cell.pictureImageView.layer.cornerRadius = 10
-            cell.pictureImageView.contentMode = .scaleAspectFill
-            cell.pictureImageView.layer.masksToBounds = true
-            cell.backgroundColor = .systemBackground
-            cell.selectionStyle = .none
-            cell.titleLabel.text = bandsArray[indexPath.item].title
+            let cell = tableView.dequeueReusableCell(withIdentifier: bandCellID, for: indexPath) as! LHomeControllerCell
+            cell.imageViewImage.image = UIImage(named: names[indexPath.row])
+            cell.imageViewImage.contentMode = .scaleAspectFill
+            cell.nameLabel.text = names[indexPath.row]
             return cell
         }
     

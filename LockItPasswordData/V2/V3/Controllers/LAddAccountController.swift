@@ -11,7 +11,8 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     let iv = UIImageView()
     iv.image = UIImage(named: "blank-app")
     iv.contentMode = .scaleAspectFill
-    iv.layer.cornerRadius = iv.frame.height / 2
+    iv.backgroundColor = .yellow
+    iv.layer.cornerRadius = 16
     iv.layer.masksToBounds = true
     iv.translatesAutoresizingMaskIntoConstraints = false
     return iv
@@ -89,6 +90,11 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     confugreUI()
 
   }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.appImageView.layer.cornerRadius = 16
+    }
 
   func confugreUI() {
     
@@ -189,45 +195,60 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
   }
     
     @objc func addTapped() {
-        let uid = Auth.auth().currentUser!.uid
-        let ref = Database.database().reference()
-        let storage = Storage.storage().reference()
-        let key = ref.child("Posts").childByAutoId().key
-        let imageRef = storage.child("Posts").child(uid).child("\(key).jpg")
-        let data = self.appImageView.image!.jpegData(compressionQuality: 0.9)
-        databaseRefer = Database.database().reference()
-        let userID = Auth.auth().currentUser!.uid
-        databaseHandle = databaseRefer.child("Users").child(userID).child("name").observe(.value, with: { (data) in
-            print(String((data.value as? String)!))
-            let name = "\(String((data.value as? String)!))"
-        })
-        let imageName = NSUUID().uuidString
-        let Storageref = Storage.storage().reference().child("post_images").child("\(imageName).jpg")
-        if let uploadData = data {
-            Storageref.putData(uploadData, metadata: nil) { (metadata, error) in
-                if error != nil{
-                    print("Failed to upload image:", error as Any)
-                    return
-                }
-                print(Storageref.downloadURL(completion: { (url, err) in
-                    if err != nil{
-                        print(err as Any)
-                        return
-                    }
-                    print("Good")
-                        if let imageUrl = url?.absoluteString {
-                            print(imageUrl)
-                                        let values = [
-                                            "postID" : key!,
-                                            "date" : "dateString",
-                                            "postImageView" : imageUrl] as [String : Any]
-                            
-                                        let postFeed = ["\(key!)" : values]
-                                        ref.child("Users").child(uid).child("my-posts").updateChildValues(postFeed)
+        if self.accountNameTF.text! == "" || self.accountUsernameTF.text! == "" || self.accountPasswordTF.text! == "" {
+            let alertController = UIAlertController(title: "Error", message: "One Or More Text Fields Were Left Empty", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                print("Okay")
+            }))
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            let uid = Auth.auth().currentUser!.uid
+                let ref = Database.database().reference()
+                let storage = Storage.storage().reference()
+                let key = ref.child("Posts").childByAutoId().key
+                let imageRef = storage.child("Posts").child(uid).child("\(key).jpg")
+                let data = self.appImageView.image!.jpegData(compressionQuality: 0.9)
+                databaseRefer = Database.database().reference()
+                let userID = Auth.auth().currentUser!.uid
+                databaseHandle = databaseRefer.child("Users").child(userID).child("name").observe(.value, with: { (data) in
+                    print(String((data.value as? String)!))
+                    let name = "\(String((data.value as? String)!))"
+                })
+                let imageName = NSUUID().uuidString
+                let Storageref = Storage.storage().reference().child("post_images").child("\(imageName).jpg")
+                if let uploadData = data {
+                    Storageref.putData(uploadData, metadata: nil) { (metadata, error) in
+                        if error != nil{
+                            print("Failed to upload image:", error as Any)
+                            return
                         }
-                }))
+                        print(Storageref.downloadURL(completion: { (url, err) in
+                            if err != nil{
+                                print(err as Any)
+                                return
+                            }
+                            print("Good")
+                                if let imageUrl = url?.absoluteString {
+                                    print(imageUrl)
+                                                let values = [
+                                                    "postID" : key!,
+                                                    "account-Name" : "\(self.accountNameTF.text!)",
+                                                    "account-Username" : "\(self.accountUsernameTF.text!)",
+                                                    "account-Password" : "\(self.accountPasswordTF.text!)",
+                                                    "account-ImageUrl" : imageUrl] as [String : Any]
+                                                let postFeed = ["\(key!)" : values]
+                                                ref.child("Users").child(uid).child("My_Accounts").updateChildValues(postFeed)
+                                    let alertController = UIAlertController(title: "Success", message: "Your Account Was Added", preferredStyle: .alert)
+                                    alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                                        self.navigationController?.popViewController(animated: true)
+                                    }))
+                                    self.present(alertController, animated: true, completion: nil)
+                                }
+                        }))
+                    }
             }
-    }
+        }
+        
     }
 
 }
