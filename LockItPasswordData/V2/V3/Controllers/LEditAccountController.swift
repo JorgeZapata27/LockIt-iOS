@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+import Firebase
+import Firebase
 
 class LEditAccountController: UIViewController, UITextFieldDelegate {
     
+    var accountName : String?
+    var postId : String?
+    
      let imageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Instagram")
+        imageView.image = UIImage(named: "blank-app")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 15
         imageView.layer.masksToBounds = true
@@ -72,7 +79,7 @@ class LEditAccountController: UIViewController, UITextFieldDelegate {
     let username : UILabel = {
         let label = UILabel()
         label.textColor = .systemGray
-        label.text = "Jorge"
+        label.text = "Username"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -81,7 +88,7 @@ class LEditAccountController: UIViewController, UITextFieldDelegate {
         let label = UILabel()
         label.textColor = .systemGray
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Zapata"
+        label.text = "Password"
         return label
     }()
     
@@ -212,11 +219,25 @@ class LEditAccountController: UIViewController, UITextFieldDelegate {
     
     @objc func addTapped() {
         print("UPDATE")
-        let alert = UIAlertController(title: "Success", message: "Your Account Has Been Updated", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(alert, animated: true, completion: nil)
+        let uid = Auth.auth().currentUser?.uid
+        if self.accountUsernameTF.text! == "" || self.accountPasswordTF.text! == "" {
+            let alertController = UIAlertController(title: "Error", message: "One Or More Text Fields Were Left Empty", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                print("Okay")
+            }))
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+                    print(postId!)
+                    Database.database().reference().child("Users").child(uid!).child("My_Accounts").child(postId!).child("account-Username").setValue(self.accountUsernameTF.text!)
+                    Database.database().reference().child("Users").child(uid!).child("My_Accounts").child(postId!).child("account-Password").setValue(self.accountPasswordTF.text!)
+                    self.username.text = self.accountUsernameTF.text!
+                    self.password.text = self.accountPasswordTF.text!
+                    let alert = UIAlertController(title: "Success", message: "Your Account Has Been Updated", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc func copyUsernameL() {

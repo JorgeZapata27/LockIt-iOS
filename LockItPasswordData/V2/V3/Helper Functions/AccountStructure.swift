@@ -13,5 +13,5 @@ class AccountStructure: NSObject {
     var Name : String?
     var Password : String?
     var Username : String?
-    var PostId : String?
+    var postId : String?
 }

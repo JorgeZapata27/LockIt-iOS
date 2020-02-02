@@ -1,5 +1,9 @@
 import UIKit
+import Firebase
 import FirebaseAuth
+import SVProgressHUD
+import FirebaseStorage
+import FirebaseDatabase
 
 struct Info {
   var image : String?
@@ -9,8 +13,8 @@ struct Info {
 class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let refreshControl = UIRefreshControl()
-    
     var delegate : LHomeControllerDelegate?
+    var posts = [AccountStructure]()
 
       let tableView : UITableView = {
         let tv = UITableView()
@@ -28,6 +32,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
 
       override func viewDidLoad() {
         super.viewDidLoad()
+        FirebaseRetrieve()
         askPlease()
         configureNavigationBar()
         view.backgroundColor = .systemBackground
@@ -45,6 +50,27 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
             configureNavigationBar()
             configureUI()
         }
+    
+    func FirebaseRetrieve() {
+        LoadingTheInformationLoader()
+        posts.removeAll()
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("Users").child(uid!).child("My_Accounts").observe(.childAdded) { (snapshot) in
+            if let value = snapshot.value as? [String : Any] {
+                let user = AccountStructure()
+                user.imageURL = value["account-ImageUrl"] as? String ?? "Not Found"
+                user.Name = value["account-Name"] as? String ?? "Not Found"
+                user.Username = value["account-Username"] as? String ?? "Not Found"
+                user.Password = value["account-Password"] as? String ?? "Not Found"
+                user.postId = value["postID"] as? String ?? "Not Found"
+                print(user.imageURL!)
+                print(user.Name!)
+                print(user.Password!)
+                self.posts.append(user)
+                self.tableView.reloadData()
+            }
+        }
+    }
 
       // MARK: - Handlers
 
@@ -60,7 +86,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
       }
     
     @objc func refreshControlSwipeUp() {
-        print("Updating")
+        FirebaseRetrieve()
         self.refreshControl.endRefreshing()
     }
 
@@ -98,19 +124,25 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         }
 
         func tableView(_ tableview: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return names.count
+            return posts.count
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: bandCellID, for: indexPath) as! LHomeControllerCell
-            cell.imageViewImage.image = UIImage(named: names[indexPath.row])
+            var users = posts[indexPath.row]
+            cell.imageViewImage.loadImageUsingCacheWithUrlString(urlString: users.imageURL!)
             cell.imageViewImage.contentMode = .scaleAspectFill
-            cell.nameLabel.text = names[indexPath.row]
+            cell.nameLabel.text = users.Name!
             return cell
         }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(LEditAccountController(), animated: true)
+        let controller = LEditAccountController() as! LEditAccountController
+        controller.username.text = posts[indexPath.row].Username!
+        controller.password.text = posts[indexPath.row].Password!
+        controller.imageView.loadImageUsingCacheWithUrlString(urlString: posts[indexPath.row].imageURL!)
+        controller.postId = posts[indexPath.row].postId!
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -142,5 +174,12 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
                 }
             }
         }
+    
+    func LoadingTheInformationLoader() {
+        SVProgressHUD.show(withStatus: "Working...")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            SVProgressHUD.dismiss()
+        }
+    }
 
 }

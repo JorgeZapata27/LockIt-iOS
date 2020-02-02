@@ -1,6 +1,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import SVProgressHUD
 import FirebaseStorage
 import FirebaseDatabase
 import Foundation
@@ -65,7 +66,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     tf.translatesAutoresizingMaskIntoConstraints = false
     return tf
   }()
-
+    
   let addButton : UIButton = {
     let btn = UIButton()
     btn.backgroundColor = .systemYellow
@@ -202,6 +203,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
             }))
             self.present(alertController, animated: true, completion: nil)
         } else {
+            LoadingTheInformationLoader()
             let uid = Auth.auth().currentUser!.uid
                 let ref = Database.database().reference()
                 let storage = Storage.storage().reference()
@@ -249,6 +251,13 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
             }
         }
         
+    }
+    
+    func LoadingTheInformationLoader() {
+        SVProgressHUD.show(withStatus: "Working...")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            SVProgressHUD.dismiss()
+        }
     }
 
 }

@@ -13,6 +13,7 @@ target 'LockItPasswordData' do
   pod 'Firebase/Analytics'
   pod 'SwiftyJSON'
   pod 'TextFieldEffects'
+  pod 'SVProgressHUD'
 
 end
 
