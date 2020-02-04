@@ -15,6 +15,7 @@ target 'LockItPasswordData' do
   pod 'TextFieldEffects'
   pod 'SVProgressHUD'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'GoogleSignIn'
 
 end
 
