@@ -1,20 +1,26 @@
+// APP ID : ca-app-pub-2433250329496395~6346024800
+// UNIT ID : ca-app-pub-2433250329496395/2150365825
+// TEST ID : ca-app-pub-3940256099942544/2934735716
+
 import UIKit
 import Firebase
 import FirebaseAuth
 import SVProgressHUD
 import FirebaseStorage
 import FirebaseDatabase
+import GoogleMobileAds
 
 struct Info {
   var image : String?
   var title : String?
 }
 
-class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSource, GADBannerViewDelegate {
     
     let refreshControl = UIRefreshControl()
     var delegate : LHomeControllerDelegate?
     var posts = [AccountStructure]()
+    var bannerView : GADBannerView!
 
       let tableView : UITableView = {
         let tv = UITableView()
@@ -37,18 +43,51 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         configureNavigationBar()
         view.backgroundColor = .systemBackground
         configureUI()
+        Ads()
       }
-
+    
+    func Ads() {
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        addBannerViewToView(bannerView)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+     bannerView.translatesAutoresizingMaskIntoConstraints = false
+     view.addSubview(bannerView)
+     view.addConstraints(
+       [NSLayoutConstraint(item: bannerView,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: bottomLayoutGuide,
+                           attribute: .top,
+                           multiplier: 1,
+                           constant: 0),
+        NSLayoutConstraint(item: bannerView,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: view,
+                           attribute: .centerX,
+                           multiplier: 1,
+                           constant: 0)
+       ])
+    }
+    
         override func viewDidAppear(_ animated: Bool) {
             askPlease()
             configureNavigationBar()
             configureUI()
+            Ads()
         }
 
         override func viewWillAppear(_ animated: Bool) {
             askPlease()
             configureNavigationBar()
             configureUI()
+            Ads()
         }
     
     func FirebaseRetrieve() {
@@ -117,7 +156,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
           tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
           tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
           tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-          tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+          tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50).isActive = true
           tableView.delegate = self
           tableView.dataSource = self
           tableView.register(LHomeControllerCell.self, forCellReuseIdentifier: bandCellID)
@@ -180,6 +219,39 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             SVProgressHUD.dismiss()
         }
+    }
+
+    /// Tells the delegate an ad request loaded an ad.
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+      print("adViewDidReceiveAd")
+    }
+
+    /// Tells the delegate an ad request failed.
+    func adView(_ bannerView: GADBannerView,
+        didFailToReceiveAdWithError error: GADRequestError) {
+      print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    /// Tells the delegate that a full-screen view will be presented in response
+    /// to the user clicking on an ad.
+    func adViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("adViewWillPresentScreen")
+    }
+
+    /// Tells the delegate that the full-screen view will be dismissed.
+    func adViewWillDismissScreen(_ bannerView: GADBannerView) {
+      print("adViewWillDismissScreen")
+    }
+
+    /// Tells the delegate that the full-screen view has been dismissed.
+    func adViewDidDismissScreen(_ bannerView: GADBannerView) {
+      print("adViewDidDismissScreen")
+    }
+
+    /// Tells the delegate that a user click will open another app (such as
+    /// the App Store), backgrounding the current app.
+    func adViewWillLeaveApplication(_ bannerView: GADBannerView) {
+      print("adViewWillLeaveApplication")
     }
 
 }

@@ -5,14 +5,19 @@ import SVProgressHUD
 import FirebaseStorage
 import FirebaseDatabase
 import Foundation
+import GoogleMobileAds
 
-class LAddAccountController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class LAddAccountController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GADBannerViewDelegate {
+    
+    var bannerView: GADBannerView!
+    
+    var appName = "blank-app"
     
   let appImageView : UIImageView = {
     let iv = UIImageView()
     iv.image = UIImage(named: "blank-app")
     iv.contentMode = .scaleAspectFill
-    iv.backgroundColor = .yellow
+    iv.backgroundColor = .black
     iv.layer.cornerRadius = 16
     iv.layer.masksToBounds = true
     iv.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +100,11 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.appImageView.layer.cornerRadius = 16
+        if self.appName != "blank-app" {
+            appImageView.image = UIImage(named: appName)
+        } else {
+            appImageView.image = UIImage(named: "blank-app")
+        }
     }
 
   func confugreUI() {
@@ -145,7 +155,41 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     addButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     addButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
     addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    
+    bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+    addBannerViewToView(bannerView)
+    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+    bannerView.rootViewController = self
+    bannerView.load(GADRequest())
+    bannerView.delegate = self
+    
+    if self.appName != "blank-app" {
+        appImageView.image = UIImage(named: appName)
+    } else {
+        appImageView.image = UIImage(named: "blank-app")
+    }
   }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+     bannerView.translatesAutoresizingMaskIntoConstraints = false
+     view.addSubview(bannerView)
+     view.addConstraints(
+       [NSLayoutConstraint(item: bannerView,
+                           attribute: .bottom,
+                           relatedBy: .equal,
+                           toItem: bottomLayoutGuide,
+                           attribute: .top,
+                           multiplier: 1,
+                           constant: 0),
+        NSLayoutConstraint(item: bannerView,
+                           attribute: .centerX,
+                           relatedBy: .equal,
+                           toItem: view,
+                           attribute: .centerX,
+                           multiplier: 1,
+                           constant: 0)
+       ])
+    }
 
   @objc func openImagePicker() {
     let imagePickerController = UIImagePickerController()
@@ -165,6 +209,10 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action : UIAlertAction) in
       imagePickerController.sourceType = .photoLibrary
         self.present(imagePickerController, animated: true, completion: nil)
+    }))
+    actionSheet.addAction(UIAlertAction(title: "LockIt Icons", style: .default, handler: { (action) in
+        print("Hello")
+        self.present(LCollectionIcons(), animated: true, completion: nil)
     }))
     actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     self.present(actionSheet, animated: true, completion: nil)

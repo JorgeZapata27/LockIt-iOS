@@ -117,7 +117,11 @@ class LLoginController : UIViewController, UITextFieldDelegate {
 
         override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
+            if Auth.auth().currentUser != nil {
+               print("JHIOOOOO")
+            }
           if let user = Auth.auth().currentUser {
+            print("AutoLoginTRUE")
 
             let context = LAContext()
             var error: NSError?

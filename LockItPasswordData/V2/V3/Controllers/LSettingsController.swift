@@ -41,6 +41,7 @@ class LSettingsController : UIViewController {
     
     func Firebase() {
         let uid = Auth.auth().currentUser!.uid
+        print(uid)
         Database.database().reference().child("Users").child(uid).child("profileImageURL").observe(.value, with: { (data) in
             let name : String = (data.value as? String)!
             self.userInfoHeader.profileImageView.loadImageUsingCacheWithUrlString(urlString: name)

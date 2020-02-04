@@ -69,6 +69,7 @@
 		78ADDCD3227A56D800AC0FCD /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADDCD2227A56D800AC0FCD /* Password.swift */; };
 		78BA9A5D23E6C5DA0083E0F6 /* AccountStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA9A5C23E6C5DA0083E0F6 /* AccountStructure.swift */; };
 		78BA9A5F23E6C71C0083E0F6 /* LHomeControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA9A5E23E6C71C0083E0F6 /* LHomeControllerCell.swift */; };
+		78BA9A6123E895CA0083E0F6 /* LCollectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA9A6023E895CA0083E0F6 /* LCollectionIcons.swift */; };
 		78BC7D19230AD153003A07A5 /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BC7D18230AD153003A07A5 /* Interest.swift */; };
 		78C62B6B226FF50300E9AE7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78C62B6A226FF50300E9AE7D /* GoogleService-Info.plist */; };
 		78C62B84226FF5B600E9AE7D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C62B6F226FF5B400E9AE7D /* Settings.swift */; };
@@ -191,6 +192,7 @@
 		78ADDCD2227A56D800AC0FCD /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		78BA9A5C23E6C5DA0083E0F6 /* AccountStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStructure.swift; sourceTree = "<group>"; };
 		78BA9A5E23E6C71C0083E0F6 /* LHomeControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHomeControllerCell.swift; sourceTree = "<group>"; };
+		78BA9A6023E895CA0083E0F6 /* LCollectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCollectionIcons.swift; sourceTree = "<group>"; };
 		78BC7D18230AD153003A07A5 /* Interest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
 		78C62B55226FF4FA00E9AE7D /* LockItPasswordData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LockItPasswordData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C62B64226FF4FB00E9AE7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -200,7 +202,7 @@
 		78C62B72226FF5B400E9AE7D /* OnlineAccounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlineAccounts.swift; sourceTree = "<group>"; };
 		78C62B75226FF5B400E9AE7D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78C62B79226FF5B500E9AE7D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		78C62B7C226FF5B500E9AE7D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		78C62B7C226FF5B500E9AE7D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 0; };
 		78C62B7D226FF5B500E9AE7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78C62B82226FF5B600E9AE7D /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		78C62B83226FF5B600E9AE7D /* SignUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				78265B2C23C0DC3C00054C12 /* LMenuController.swift */,
 				78265B2D23C0DC3C00054C12 /* LContainerController.swift */,
 				78265B2823C0DADC00054C12 /* LAddAccountController.swift */,
+				78BA9A6023E895CA0083E0F6 /* LCollectionIcons.swift */,
 				78265B2723C0DADB00054C12 /* LHomeController.swift */,
 				78E836E423CE1B9E00BB74C3 /* BandCell.swift */,
 				78E836E023CCF30400BB74C3 /* CustomTableViewCell.swift */,
@@ -796,6 +799,7 @@
 				78FFEA5E237A8FD70036C173 /* AWController.swift in Sources */,
 				78BA9A5D23E6C5DA0083E0F6 /* AccountStructure.swift in Sources */,
 				782E5EBE22A4299C00F1456B /* Nav.swift in Sources */,
+				78BA9A6123E895CA0083E0F6 /* LCollectionIcons.swift in Sources */,
 				78265B3723C1126300054C12 /* SettingsCell.swift in Sources */,
 				78265B3323C1125E00054C12 /* UserInfoHeader.swift in Sources */,
 				78ADDCCF227A56BD00AC0FCD /* AppleId.swift in Sources */,

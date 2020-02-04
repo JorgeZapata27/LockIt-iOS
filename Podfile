@@ -14,6 +14,7 @@ target 'LockItPasswordData' do
   pod 'SwiftyJSON'
   pod 'TextFieldEffects'
   pod 'SVProgressHUD'
+  pod 'Google-Mobile-Ads-SDK'
 
 end
 
