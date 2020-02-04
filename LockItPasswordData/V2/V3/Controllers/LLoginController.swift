@@ -57,13 +57,7 @@ class LLoginController : UIViewController, UITextFieldDelegate {
             button.layer.cornerRadius = 5
             return button
         }()
-
-        let dontHaveAccountButton: UIButton = {
-            let button = UIButton(type: .system)
-            button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
-            return button
-        }()
-    
+        
         lazy var dividerView: UIView = {
             let dividerView = UIView()
             
@@ -91,9 +85,20 @@ class LLoginController : UIViewController, UITextFieldDelegate {
             return dividerView
         }()
         
-        let appleLoginButton: ASAuthorizationAppleIDButton = {
-            let button = ASAuthorizationAppleIDButton()
-            button.addTarget(self, action: #selector(appletouch), for: .touchUpInside)
+        let googleLoginButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.layer.cornerRadius = 5
+            button.setTitle("Sign In with Google", for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+            button.backgroundColor = .googleRed()
+            button.setTitleColor(.white, for: .normal)
+            button.addTarget(self, action: #selector(handleGoogleSignIn), for: .touchUpInside)
+            return button
+        }()
+
+        let dontHaveAccountButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
             return button
         }()
     
@@ -108,12 +113,24 @@ class LLoginController : UIViewController, UITextFieldDelegate {
 
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            if UserDefaults.standard.bool(forKey: "CURRENTUSER") != true {
+                let alert = UIAlertController(title: "Current User?", message: "If you have been using LockIt, please create a new account using the same details. We apoligize for any inconvenience. Please be sure to let us know if we can help by contacting us at LockItInformation@gmail.com", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (action) in
+                    UserDefaults.standard.set(true, forKey: "CURRENTUSER")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
 
             // Functions To Throw
             darknlight()
             configureViewComponents()
 
         }
+    
+    @objc func handleGoogleSignIn() {
+        
+    }
 
         override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
@@ -284,12 +301,12 @@ class LLoginController : UIViewController, UITextFieldDelegate {
 
             view.addSubview(loginButton)
             loginButton.anchor(top: passwordContainerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
-
+            
             view.addSubview(dividerView)
             dividerView.anchor(top: loginButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
             
-            view.addSubview(appleLoginButton)
-            appleLoginButton.anchor(top: dividerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
+            view.addSubview(googleLoginButton)
+            googleLoginButton.anchor(top: dividerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
 
             view.addSubview(dontHaveAccountButton)
             dontHaveAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 32, paddingBottom: 12, paddingRight: 32, width: 0, height: 50)

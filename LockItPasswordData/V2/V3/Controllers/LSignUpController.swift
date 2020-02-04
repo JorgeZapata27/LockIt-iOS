@@ -121,11 +121,20 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
         return dividerView
     }()
     
-    let appleLoginButton: ASAuthorizationAppleIDButton = {
-        let button = ASAuthorizationAppleIDButton()
-        button.addTarget(self, action: #selector(appletouch), for: .touchUpInside)
+    let googleLoginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.layer.cornerRadius = 5
+        button.setTitle("Sign In with Google", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.backgroundColor = .googleRed()
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handleGoogleSignIn), for: .touchUpInside)
         return button
     }()
+    
+    @objc func handleGoogleSignIn() {
+        
+    }
 
     // MARK: - Init
 
@@ -326,7 +335,7 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         view.addSubview(emailContainerView)
-        emailContainerView.anchor(top: button.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
+        emailContainerView.anchor(top: button.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
 
         view.addSubview(usernameContainerView)
         usernameContainerView.anchor(top: emailContainerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 16, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
@@ -340,8 +349,8 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
         view.addSubview(dividerView)
         dividerView.anchor(top: loginButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
         
-        view.addSubview(appleLoginButton)
-        appleLoginButton.anchor(top: dividerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
+        view.addSubview(googleLoginButton)
+        googleLoginButton.anchor(top: dividerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
 
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 32, paddingBottom: 12, paddingRight: 32, width: 0, height: 50)
