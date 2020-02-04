@@ -55,6 +55,7 @@
 		7866C1E5234A66B10075189A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E4234A66B10075189A /* TableViewController.swift */; };
 		7866C1E9234B0EA80075189A /* NAVV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E8234B0EA70075189A /* NAVV2.swift */; };
 		786B282923C670DB0048287A /* LExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786B282823C670DB0048287A /* LExtensions.swift */; };
+		787B87CC23E9D77900A1A8CE /* LFirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787B87CB23E9D77800A1A8CE /* LFirstController.swift */; };
 		7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7889C2AD229DBFB8008DAAE4 /* TouchId.swift */; };
 		7890B03623AAA9D00081679C /* LSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7890B03523AAA9D00081679C /* LSignUpController.swift */; };
 		7897FAB023E350A700BE35BA /* UIIMage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7897FAAF23E350A700BE35BA /* UIIMage.swift */; };
@@ -67,6 +68,12 @@
 		78ADDCCF227A56BD00AC0FCD /* AppleId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADDCCE227A56BD00AC0FCD /* AppleId.swift */; };
 		78ADDCD1227A56CA00AC0FCD /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADDCD0227A56CA00AC0FCD /* Email.swift */; };
 		78ADDCD3227A56D800AC0FCD /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADDCD2227A56D800AC0FCD /* Password.swift */; };
+		78ADEAF623E9D8A10057A769 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADEAF323E9D8A10057A769 /* Page.swift */; };
+		78ADEAF723E9D8A10057A769 /* SwipingController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADEAF423E9D8A10057A769 /* SwipingController+UICollectionView.swift */; };
+		78ADEAF823E9D8A10057A769 /* SwipingController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADEAF523E9D8A10057A769 /* SwipingController+extension.swift */; };
+		78ADEAFC23E9D8A60057A769 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADEAF923E9D8A50057A769 /* ViewController.swift */; };
+		78ADEAFD23E9D8A60057A769 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADEAFA23E9D8A50057A769 /* PageCell.swift */; };
+		78ADEAFE23E9D8A60057A769 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ADEAFB23E9D8A60057A769 /* SwipingController.swift */; };
 		78BA9A5D23E6C5DA0083E0F6 /* AccountStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA9A5C23E6C5DA0083E0F6 /* AccountStructure.swift */; };
 		78BA9A5F23E6C71C0083E0F6 /* LHomeControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA9A5E23E6C71C0083E0F6 /* LHomeControllerCell.swift */; };
 		78BA9A6123E895CA0083E0F6 /* LCollectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA9A6023E895CA0083E0F6 /* LCollectionIcons.swift */; };
@@ -178,6 +185,7 @@
 		7866C1E4234A66B10075189A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		7866C1E8234B0EA70075189A /* NAVV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAVV2.swift; sourceTree = "<group>"; };
 		786B282823C670DB0048287A /* LExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LExtensions.swift; sourceTree = "<group>"; };
+		787B87CB23E9D77800A1A8CE /* LFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LFirstController.swift; sourceTree = "<group>"; };
 		7889C2AD229DBFB8008DAAE4 /* TouchId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchId.swift; sourceTree = "<group>"; };
 		7890B03523AAA9D00081679C /* LSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSignUpController.swift; sourceTree = "<group>"; };
 		7897FAAF23E350A700BE35BA /* UIIMage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIIMage.swift; sourceTree = "<group>"; };
@@ -190,6 +198,12 @@
 		78ADDCCE227A56BD00AC0FCD /* AppleId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleId.swift; sourceTree = "<group>"; };
 		78ADDCD0227A56CA00AC0FCD /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		78ADDCD2227A56D800AC0FCD /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
+		78ADEAF323E9D8A10057A769 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		78ADEAF423E9D8A10057A769 /* SwipingController+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwipingController+UICollectionView.swift"; sourceTree = "<group>"; };
+		78ADEAF523E9D8A10057A769 /* SwipingController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwipingController+extension.swift"; sourceTree = "<group>"; };
+		78ADEAF923E9D8A50057A769 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		78ADEAFA23E9D8A50057A769 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		78ADEAFB23E9D8A60057A769 /* SwipingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 		78BA9A5C23E6C5DA0083E0F6 /* AccountStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStructure.swift; sourceTree = "<group>"; };
 		78BA9A5E23E6C71C0083E0F6 /* LHomeControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHomeControllerCell.swift; sourceTree = "<group>"; };
 		78BA9A6023E895CA0083E0F6 /* LCollectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCollectionIcons.swift; sourceTree = "<group>"; };
@@ -282,6 +296,7 @@
 		78265B3923C1128F00054C12 /* Helper Functions */ = {
 			isa = PBXGroup;
 			children = (
+				78ADEAF223E9D8730057A769 /* Pagation */,
 				786B282823C670DB0048287A /* LExtensions.swift */,
 				781EC74F23C3A233005759F7 /* SignInWithAppleUIKitHelpers */,
 				78E836EA23CEEF3800BB74C3 /* MyVariables.swift */,
@@ -459,6 +474,7 @@
 				7890B03523AAA9D00081679C /* LSignUpController.swift */,
 				7811F81E23D0D25A004D58FA /* LReportErrorController.swift */,
 				78FFFAF823E2AE2A00225B62 /* LEditAccountController.swift */,
+				787B87CB23E9D77800A1A8CE /* LFirstController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -508,6 +524,19 @@
 				78ADDCCE227A56BD00AC0FCD /* AppleId.swift */,
 			);
 			path = "Apple Id";
+			sourceTree = "<group>";
+		};
+		78ADEAF223E9D8730057A769 /* Pagation */ = {
+			isa = PBXGroup;
+			children = (
+				78ADEAFA23E9D8A50057A769 /* PageCell.swift */,
+				78ADEAFB23E9D8A60057A769 /* SwipingController.swift */,
+				78ADEAF923E9D8A50057A769 /* ViewController.swift */,
+				78ADEAF323E9D8A10057A769 /* Page.swift */,
+				78ADEAF523E9D8A10057A769 /* SwipingController+extension.swift */,
+				78ADEAF423E9D8A10057A769 /* SwipingController+UICollectionView.swift */,
+			);
+			path = Pagation;
 			sourceTree = "<group>";
 		};
 		78BC7D04230ACFF2003A07A5 /* New Group */ = {
@@ -785,8 +814,10 @@
 				785530B923A2CE830038C809 /* V3CellMain.swift in Sources */,
 				7889C2AE229DBFB8008DAAE4 /* TouchId.swift in Sources */,
 				78FFFAF923E2AE2A00225B62 /* LEditAccountController.swift in Sources */,
+				78ADEAF723E9D8A10057A769 /* SwipingController+UICollectionView.swift in Sources */,
 				78C62B86226FF5B600E9AE7D /* OnlineAccounts.swift in Sources */,
 				78595D6223C3BCC5008EC65A /* LEditProfileController.swift in Sources */,
+				78ADEAFD23E9D8A60057A769 /* PageCell.swift in Sources */,
 				782F43332274DBA100D32BBD /* AddInfo.swift in Sources */,
 				782F434A2275438600D32BBD /* TravelTableView.swift in Sources */,
 				781EC75223C3A233005759F7 /* AuthState.swift in Sources */,
@@ -803,6 +834,7 @@
 				78265B3723C1126300054C12 /* SettingsCell.swift in Sources */,
 				78265B3323C1125E00054C12 /* UserInfoHeader.swift in Sources */,
 				78ADDCCF227A56BD00AC0FCD /* AppleId.swift in Sources */,
+				78ADEAFC23E9D8A60057A769 /* ViewController.swift in Sources */,
 				78C62B84226FF5B600E9AE7D /* Settings.swift in Sources */,
 				78265B2A23C0DADC00054C12 /* LAddAccountController.swift in Sources */,
 				7811F81F23D0D25A004D58FA /* LReportErrorController.swift in Sources */,
@@ -810,6 +842,7 @@
 				785530BB23A2CFB90038C809 /* NewestCell.swift in Sources */,
 				78DCBA0E237C675400F817A3 /* SettingsNavController.swift in Sources */,
 				78658AB923CB968600C7DF90 /* LChangeCountryController.swift in Sources */,
+				787B87CC23E9D77900A1A8CE /* LFirstController.swift in Sources */,
 				78E836E123CCF30400BB74C3 /* CustomTableViewCell.swift in Sources */,
 				78265B4023C1128F00054C12 /* LSettingsSection.swift in Sources */,
 				782F434E2275E70200D32BBD /* Buziness.swift in Sources */,
@@ -821,9 +854,11 @@
 				782F434C2275E6DA00D32BBD /* BuzInessTableView.swift in Sources */,
 				789C996D23CA1A26004ABF3A /* LChangeEmailControllerrrr.swift in Sources */,
 				782E5EA822A0940D00F1456B /* AddedAccountsCell.swift in Sources */,
+				78ADEAF823E9D8A10057A769 /* SwipingController+extension.swift in Sources */,
 				78BC7D19230AD153003A07A5 /* Interest.swift in Sources */,
 				78265B4323C1138700054C12 /* LLoginController.swift in Sources */,
 				7866C1E5234A66B10075189A /* TableViewController.swift in Sources */,
+				78ADEAFE23E9D8A60057A769 /* SwipingController.swift in Sources */,
 				78ADDCD1227A56CA00AC0FCD /* Email.swift in Sources */,
 				7819A9A9235986570003DFDC /* StartUpController.swift in Sources */,
 				781EC75323C3A233005759F7 /* SignInWithAppleManager.swift in Sources */,
@@ -831,6 +866,7 @@
 				7866C1E9234B0EA80075189A /* NAVV2.swift in Sources */,
 				78265B2923C0DADC00054C12 /* LHomeController.swift in Sources */,
 				782F43482275436400D32BBD /* Travel.swift in Sources */,
+				78ADEAF623E9D8A10057A769 /* Page.swift in Sources */,
 				78C62B8F226FF5B600E9AE7D /* AppDelegate.swift in Sources */,
 				786B282923C670DB0048287A /* LExtensions.swift in Sources */,
 				78265B4223C1133500054C12 /* LSettingsController.swift in Sources */,

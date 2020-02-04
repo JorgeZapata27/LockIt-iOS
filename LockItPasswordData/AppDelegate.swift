@@ -19,16 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
+
         FirebaseApp.configure()
         
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        let navController = UINavigationController(rootViewController: LLoginController())
-        window?.rootViewController = navController
+        if UserDefaults.standard.bool(forKey: "DONEORNOT") != false {
+            let navController = UINavigationController(rootViewController: LLoginController())
+            window?.rootViewController = navController
+        } else {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            let swipingController = SwipingController(collectionViewLayout: layout)
+            
+            let navController = UINavigationController(rootViewController: swipingController)
+            window?.rootViewController = navController
+        }
 
-        
         return true
     }
 

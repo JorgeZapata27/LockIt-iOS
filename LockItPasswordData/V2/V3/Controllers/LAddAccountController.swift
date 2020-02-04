@@ -11,8 +11,6 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     
     var bannerView: GADBannerView!
     
-    var appName = "blank-app"
-    
   let appImageView : UIImageView = {
     let iv = UIImageView()
     iv.image = UIImage(named: "blank-app")
@@ -94,16 +92,39 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
 
     // Functions To Throw
     confugreUI()
+    let vaar = MyVariables.account
+    if vaar != "nil" {
+        print(MyVariables.account)
+    }
 
   }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.appImageView.layer.cornerRadius = 16
-        if self.appName != "blank-app" {
-            appImageView.image = UIImage(named: appName)
-        } else {
-            appImageView.image = UIImage(named: "blank-app")
+        let account = MyVariables.account
+        if account != "nil" {
+            print(MyVariables.account)
+        }
+        let date = Date().addingTimeInterval(1.5)
+        let timer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(runCode), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer, forMode: .common)
+    }
+    
+    @objc func runCode() {
+        let account = MyVariables.account
+        if account != "nil" {
+            print(MyVariables.account)
+            appImageView.image = UIImage(named: account)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let account = MyVariables.account
+        if account != "nil" {
+            print(MyVariables.account)
+            appImageView.image = UIImage(named: account)
         }
     }
 
@@ -162,12 +183,6 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     bannerView.rootViewController = self
     bannerView.load(GADRequest())
     bannerView.delegate = self
-    
-    if self.appName != "blank-app" {
-        appImageView.image = UIImage(named: appName)
-    } else {
-        appImageView.image = UIImage(named: "blank-app")
-    }
   }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -290,6 +305,8 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
                                                 ref.child("Users").child(uid).child("My_Accounts").updateChildValues(postFeed)
                                     let alertController = UIAlertController(title: "Success", message: "Your Account Was Added", preferredStyle: .alert)
                                     alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                                        MyVariables.account = "nil"
+                                        print(MyVariables.account)
                                         self.navigationController?.popViewController(animated: true)
                                     }))
                                     self.present(alertController, animated: true, completion: nil)

@@ -220,6 +220,23 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
             SVProgressHUD.dismiss()
         }
     }
+    
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let delete = deleteAction(at: indexPath)
+//        let config = UISwipeActionsConfiguration(actions: [delete])
+//        config.performsFirstActionWithFullSwipe = true
+//        return UISwipeActionsConfiguration(actions: [delete])
+//    }
+//
+//    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+//        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+//            self.posts.remove(at: indexPath.row)
+//            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+//            completion(true)
+//        }
+//        action.backgroundColor = .systemRed
+//        return action
+//    }
 
     /// Tells the delegate an ad request loaded an ad.
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {

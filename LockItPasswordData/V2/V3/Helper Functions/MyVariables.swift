@@ -13,4 +13,5 @@ import FirebaseAuth
 
 struct MyVariables {
     static var yourVariable = "someString"
+    static var account = "nil"
 }

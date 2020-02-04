@@ -83,8 +83,7 @@ class LCollectionIcons: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (resultSearchController.isActive) {
             print(filteredTableData[indexPath.row])
-            let vc = LAddAccountController()
-            vc.appName = filteredTableData[indexPath.row]
+            MyVariables.account = "\(filteredTableData[indexPath.row])"
             self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
             let alertController = UIAlertController(title: "\(filteredTableData[indexPath.row])", message: "Is your choice", preferredStyle: .alert)
@@ -92,8 +91,7 @@ class LCollectionIcons: UITableViewController, UISearchResultsUpdating {
                 self.dismiss(animated: true, completion: nil)
             }))
         } else {
-            let vc = LAddAccountController()
-            vc.appName = sortedAccounts[indexPath.row]
+            MyVariables.account = "\(sortedAccounts[indexPath.row])"
             self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
             print(sortedAccounts[indexPath.row])
