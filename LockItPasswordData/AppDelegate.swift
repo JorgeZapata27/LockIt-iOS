@@ -27,17 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        if UserDefaults.standard.bool(forKey: "DONEORNOT") != false {
+//        if UserDefaults.standard.bool(forKey: "DONEORNOT") != false {
             let navController = UINavigationController(rootViewController: LLoginController())
             window?.rootViewController = navController
-        } else {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            let swipingController = SwipingController(collectionViewLayout: layout)
-            
-            let navController = UINavigationController(rootViewController: swipingController)
-            window?.rootViewController = navController
-        }
+//        } else {
+//            let layout = UICollectionViewFlowLayout()
+//            layout.scrollDirection = .horizontal
+//            let swipingController = SwipingController(collectionViewLayout: layout)
+//
+//            let navController = UINavigationController(rootViewController: swipingController)
+//            window?.rootViewController = navController
+//        }
 
         return true
     }
