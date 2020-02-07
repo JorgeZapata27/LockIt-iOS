@@ -44,6 +44,7 @@
 		782F434A2275438600D32BBD /* TravelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F43492275438600D32BBD /* TravelTableView.swift */; };
 		782F434C2275E6DA00D32BBD /* BuzInessTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F434B2275E6DA00D32BBD /* BuzInessTableView.swift */; };
 		782F434E2275E70200D32BBD /* Buziness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782F434D2275E70200D32BBD /* Buziness.swift */; };
+		7842576223EBEF8D00E2F0D8 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7842576123EBEF8D00E2F0D8 /* CheckInternet.swift */; };
 		785530B523A2BB020038C809 /* V3TblVCAccounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530B423A2BB020038C809 /* V3TblVCAccounts.swift */; };
 		785530B723A2CC3C0038C809 /* AddAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530B623A2CC3C0038C809 /* AddAccountVC.swift */; };
 		785530B923A2CE830038C809 /* V3CellMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530B823A2CE830038C809 /* V3CellMain.swift */; };
@@ -174,6 +175,7 @@
 		782F43492275438600D32BBD /* TravelTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableView.swift; sourceTree = "<group>"; };
 		782F434B2275E6DA00D32BBD /* BuzInessTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuzInessTableView.swift; sourceTree = "<group>"; };
 		782F434D2275E70200D32BBD /* Buziness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buziness.swift; sourceTree = "<group>"; };
+		7842576123EBEF8D00E2F0D8 /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 		785530B423A2BB020038C809 /* V3TblVCAccounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3TblVCAccounts.swift; sourceTree = "<group>"; };
 		785530B623A2CC3C0038C809 /* AddAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountVC.swift; sourceTree = "<group>"; };
 		785530B823A2CE830038C809 /* V3CellMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V3CellMain.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				78E836EA23CEEF3800BB74C3 /* MyVariables.swift */,
 				7897FAAF23E350A700BE35BA /* UIIMage.swift */,
 				78BA9A5C23E6C5DA0083E0F6 /* AccountStructure.swift */,
+				7842576123EBEF8D00E2F0D8 /* CheckInternet.swift */,
 			);
 			path = "Helper Functions";
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				91226A520F883911D39C6099 /* [CP] Embed Pods Frameworks */,
 				782E5EEB22A6BB5200F1456B /* Embed Watch Content */,
 				78CFC191233BEBD4009E181A /* Embed App Extensions */,
+				29E5151B947F12BDAFB52930 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -743,6 +747,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		29E5151B947F12BDAFB52930 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LockItPasswordData/Pods-LockItPasswordData-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LockItPasswordData/Pods-LockItPasswordData-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LockItPasswordData/Pods-LockItPasswordData-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		37A6F2A7B96099F772EBBE2D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -828,6 +849,7 @@
 				782F433822751AE300D32BBD /* SocialMediaOptions.swift in Sources */,
 				78A0A56E2282381700D857EA /* CreditCards.swift in Sources */,
 				78FFEA5E237A8FD70036C173 /* AWController.swift in Sources */,
+				7842576223EBEF8D00E2F0D8 /* CheckInternet.swift in Sources */,
 				78BA9A5D23E6C5DA0083E0F6 /* AccountStructure.swift in Sources */,
 				782E5EBE22A4299C00F1456B /* Nav.swift in Sources */,
 				78BA9A6123E895CA0083E0F6 /* LCollectionIcons.swift in Sources */,

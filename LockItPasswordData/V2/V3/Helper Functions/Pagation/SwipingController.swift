@@ -11,12 +11,12 @@ import UIKit
 class SwipingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let pages = [
-        Page(imageName: "icon", headerText: "Join use today in our fun and games!", bodyText: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon."),
-        Page(imageName: "icon", headerText: "Subscribe and get coupons on our daily events", bodyText: "Get notified of the savings immediately when we announce them on our website. Make sure to also give us any feedback you have."),
-        Page(imageName: "icon", headerText: "VIP members special servicess", bodyText: ""),
-        Page(imageName: "icon", headerText: "Join use today in our fun and games!", bodyText: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon."),
-        Page(imageName: "icon", headerText: "Subscribe and get coupons on our daily events", bodyText: "Get notified of the savings immediately when we announce them on our website. Make sure to also give us any feedback you have."),
-        Page(imageName: "icon", headerText: "VIP members special services", bodyText: "")
+        Page(imageName: "icon", headerText: "Welcome To LockIt!!", bodyText: "Your Personal Password Manager"),
+        Page(imageName: "NoDocs", headerText: "Enough With Your Locked Doc", bodyText: "Start Using LockIt's Technology And Only Have To Remember 1 Password!"),
+        Page(imageName: "Countries", headerText: "Global Audience", bodyText: "See Our Global User Base!"),
+        Page(imageName: "CustomAccounts", headerText: "Custom Accounts", bodyText: "Start Adding Custom Accounts, By Adding Icons From Our App Gallery Or Your Photo Library"),
+        Page(imageName: "icon", headerText: "Start Now!", bodyText: "Start Relying On LockIt, And Let Us Do The Memory For You, With Unlimited Storage, And Free Memory!!"),
+        Page(imageName: "icon", headerText: "Redirecting!", bodyText: "")
     ]
 
     private let previousButton: UIButton = {

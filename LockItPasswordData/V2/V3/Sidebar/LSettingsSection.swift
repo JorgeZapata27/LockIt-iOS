@@ -33,11 +33,14 @@ enum LCommunicationOptions : Int, CaseIterable, LSectionType {
     
   case notifications
   case reportCrashes
+  case ourWebsite
 
   var containsSwitch : Bool {
     switch self {
       case .notifications: return true
       case .reportCrashes: return true
+      case .ourWebsite
+        : return true
     }
   }
 
@@ -45,6 +48,7 @@ enum LCommunicationOptions : Int, CaseIterable, LSectionType {
     switch self {
       case .notifications : return "Old Info"
       case .reportCrashes : return "Report Error"
+    case .ourWebsite : return "Our Website"
     }
   }
 }

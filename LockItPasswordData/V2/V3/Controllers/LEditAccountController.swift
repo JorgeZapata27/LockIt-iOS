@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import SVProgressHUD
 import FirebaseAuth
 import Firebase
 import Firebase
@@ -227,11 +228,13 @@ class LEditAccountController: UIViewController, UITextFieldDelegate {
             }))
             self.present(alertController, animated: true, completion: nil)
         } else {
+            SVProgressHUD.show(withStatus: "Working")
                     print(postId!)
                     Database.database().reference().child("Users").child(uid!).child("My_Accounts").child(postId!).child("account-Username").setValue(self.accountUsernameTF.text!)
                     Database.database().reference().child("Users").child(uid!).child("My_Accounts").child(postId!).child("account-Password").setValue(self.accountPasswordTF.text!)
                     self.username.text = self.accountUsernameTF.text!
                     self.password.text = self.accountPasswordTF.text!
+            SVProgressHUD.dismiss()
                     let alert = UIAlertController(title: "Success", message: "Your Account Has Been Updated", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
                         self.navigationController?.popViewController(animated: true)

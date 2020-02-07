@@ -22,10 +22,26 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.524393309473-ktq393sc7ta0r0q5funq505b51q5naei</string>
+			</array>
+		</dict>
+		<dict/>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-2433250329496395~6346024800</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Please let us use your camera to grab photos</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Please let us use your photo library to select a profile photo. </string>
 	<key>UIApplicationSceneManifest</key>
@@ -50,9 +66,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Please let us use your camera to grab photos</string>
-	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-2433250329496395~6346024800</string>
 </dict>
 </plist>

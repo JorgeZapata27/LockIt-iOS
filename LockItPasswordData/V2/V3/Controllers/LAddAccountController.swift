@@ -266,7 +266,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
             }))
             self.present(alertController, animated: true, completion: nil)
         } else {
-            LoadingTheInformationLoader()
+            SVProgressHUD.show(withStatus: "Working...")
             let uid = Auth.auth().currentUser!.uid
                 let ref = Database.database().reference()
                 let storage = Storage.storage().reference()
@@ -307,6 +307,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
                                     alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
                                         MyVariables.account = "nil"
                                         print(MyVariables.account)
+                                        SVProgressHUD.dismiss()
                                         self.navigationController?.popViewController(animated: true)
                                     }))
                                     self.present(alertController, animated: true, completion: nil)
@@ -316,13 +317,6 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
             }
         }
         
-    }
-    
-    func LoadingTheInformationLoader() {
-        SVProgressHUD.show(withStatus: "Working...")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            SVProgressHUD.dismiss()
-        }
     }
 
 }

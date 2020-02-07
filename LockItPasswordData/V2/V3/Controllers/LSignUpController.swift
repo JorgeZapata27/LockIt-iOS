@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Firebase
+import SVProgressHUD
 import FirebaseStorage
 import AuthenticationServices
 
@@ -25,14 +26,16 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = UIImage(named: "Profile-Icon.png")
+        iv.image = UIImage(named: "jorge.png")
         iv.layer.cornerRadius = 5
+        iv.layer.masksToBounds = true
         return iv
     }()
     
     let button: UIButton = {
         let btn = UIButton()
         btn.setTitle("Add Image", for: .normal)
+        btn.setTitleColor(UIColor.systemYellow, for: .normal)
         btn.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
         return btn
     }()
@@ -212,6 +215,7 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
     // MARK: - Selectors
 
     @objc func handleSignUp() {
+        SVProgressHUD.show(withStatus: "Working...")
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         guard let username = usernameTextField.text else { return }
@@ -252,6 +256,7 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
                             Database.database().reference().child("Users").child((user?.user.uid)!).updateChildValues(dict) { (error, ref) in
                                 if error == nil {
                                     print("Done. ")
+                                    SVProgressHUD.dismiss()
                                     self.navigationController?.pushViewController(LHomeController(), animated: true)
                                 }
                             }
@@ -345,12 +350,6 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
 
         view.addSubview(loginButton)
         loginButton.anchor(top: passwordContainerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
-        
-        view.addSubview(dividerView)
-        dividerView.anchor(top: loginButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
-        
-        view.addSubview(googleLoginButton)
-        googleLoginButton.anchor(top: dividerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
 
         view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 32, paddingBottom: 12, paddingRight: 32, width: 0, height: 50)
@@ -404,5 +403,12 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return (true)
+    }
+    
+    func LoadingTheInformationLoader() {
+        SVProgressHUD.show(withStatus: "Working...")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            SVProgressHUD.dismiss()
+        }
     }
 }

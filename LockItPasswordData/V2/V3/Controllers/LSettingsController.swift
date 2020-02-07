@@ -175,8 +175,10 @@ extension LSettingsController: UITableViewDelegate, UITableViewDataSource {
                 print("Report Error")
                 self.navigationController?.pushViewController(LReportErrorController(), animated: true)
             } else if LCommunicationOptions(rawValue: indexPath.row)!.rawValue == 2 {
-                print("Report Error")
-                self.navigationController?.pushViewController(LReportErrorController(), animated: true)
+                print("Website")
+                if let url = URL(string: "https://lockit.netlify.com") {
+                    UIApplication.shared.open(url)
+                }
             }
         }
       }

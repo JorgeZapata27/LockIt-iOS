@@ -38,6 +38,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
 
       override func viewDidLoad() {
         super.viewDidLoad()
+        posts.removeAll()
         FirebaseRetrieve()
         askPlease()
         configureNavigationBar()
@@ -76,38 +77,35 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
        ])
     }
     
-        override func viewDidAppear(_ animated: Bool) {
-            askPlease()
-            configureNavigationBar()
-            configureUI()
-            Ads()
-        }
-
-        override func viewWillAppear(_ animated: Bool) {
-            askPlease()
-            configureNavigationBar()
-            configureUI()
-            Ads()
-        }
-    
     func FirebaseRetrieve() {
-        LoadingTheInformationLoader()
-        posts.removeAll()
-        let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("Users").child(uid!).child("My_Accounts").observe(.childAdded) { (snapshot) in
-            if let value = snapshot.value as? [String : Any] {
-                let user = AccountStructure()
-                user.imageURL = value["account-ImageUrl"] as? String ?? "Not Found"
-                user.Name = value["account-Name"] as? String ?? "Not Found"
-                user.Username = value["account-Username"] as? String ?? "Not Found"
-                user.Password = value["account-Password"] as? String ?? "Not Found"
-                user.postId = value["postID"] as? String ?? "Not Found"
-                print(user.imageURL!)
-                print(user.Name!)
-                print(user.Password!)
-                self.posts.append(user)
-                self.tableView.reloadData()
+        InternetSetup()
+    }
+    
+    func InternetSetup() {
+        if CheckInternet.Connection() {
+            SVProgressHUD.show(withStatus: "Working...")
+            posts.removeAll()
+            let uid = Auth.auth().currentUser?.uid
+            Database.database().reference().child("Users").child(uid!).child("My_Accounts").observe(.childAdded) { (snapshot) in
+                if let value = snapshot.value as? [String : Any] {
+                    let user = AccountStructure()
+                    user.imageURL = value["account-ImageUrl"] as? String ?? "Not Found"
+                    user.Name = value["account-Name"] as? String ?? "Not Found"
+                    user.Username = value["account-Username"] as? String ?? "Not Found"
+                    user.Password = value["account-Password"] as? String ?? "Not Found"
+                    user.postId = value["postID"] as? String ?? "Not Found"
+                    print(user.imageURL!)
+                    print(user.Name!)
+                    print(user.Password!)
+                    self.posts.append(user)
+                    self.tableView.reloadData()
+                }
             }
+            SVProgressHUD.dismiss()
+        } else {
+            let alert = UIAlertController(title: "No Connection", message: "Please Be Connected To Internet To Access Your LockIt Accounts", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 
@@ -168,7 +166,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: bandCellID, for: indexPath) as! LHomeControllerCell
-            var users = posts[indexPath.row]
+            let users = posts[indexPath.row]
             cell.imageViewImage.loadImageUsingCacheWithUrlString(urlString: users.imageURL!)
             cell.imageViewImage.contentMode = .scaleAspectFill
             cell.nameLabel.text = users.Name!

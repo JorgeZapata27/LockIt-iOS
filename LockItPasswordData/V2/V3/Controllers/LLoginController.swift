@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SVProgressHUD
 import Firebase
 import AuthenticationServices
 import LocalAuthentication
@@ -209,10 +210,11 @@ class LLoginController : UIViewController, UITextFieldDelegate {
                 dontHaveAccountButton.setAttributedTitle(attributedTitle, for: .normal)
             }
         }
-
+    
         // MARK: - Selectors
 
         @objc func handleLogin() {
+            SVProgressHUD.show(withStatus: "Working...")
             guard let email = emailTextField.text else { return }
             guard let password = passwordTextField.text else { return }
             if email == "" || password == "" {
@@ -229,6 +231,7 @@ class LLoginController : UIViewController, UITextFieldDelegate {
 //                  controller.configureNavigationBar()
 //                  self.navigationController?.pushViewController(controller, animated: true)
 //                    self.present(LHomeController(), animated: true, completion: nil)
+                    SVProgressHUD.dismiss()
                     self.navigationController?.pushViewController(LHomeController(), animated: true)
                 } else {
                   let alertController = UIAlertController(title: "Error Signing In Account", message: "Your Request Was Denied. \(error!.localizedDescription)", preferredStyle: .alert)
@@ -243,15 +246,6 @@ class LLoginController : UIViewController, UITextFieldDelegate {
         @objc func handleShowSignUp() {
             navigationController?.pushViewController(LSignUpController(), animated: true)
             print("Sign Up")
-        }
-    
-        @objc func appletouch() {
-            let request = ASAuthorizationAppleIDProvider().createRequest()
-            request.requestedScopes = [.fullName, .email]
-            let controller = ASAuthorizationController(authorizationRequests: [request])
-//            controller.delegate = self
-//            controller.presentationContextProvider = self
-            controller.performRequests()
         }
     
     @objc func advance111() {
@@ -301,12 +295,6 @@ class LLoginController : UIViewController, UITextFieldDelegate {
 
             view.addSubview(loginButton)
             loginButton.anchor(top: passwordContainerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
-            
-            view.addSubview(dividerView)
-            dividerView.anchor(top: loginButton.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
-            
-            view.addSubview(googleLoginButton)
-            googleLoginButton.anchor(top: dividerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 24, paddingLeft: 32, paddingBottom: 0, paddingRight: 32, width: 0, height: 50)
 
             view.addSubview(dontHaveAccountButton)
             dontHaveAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 32, paddingBottom: 12, paddingRight: 32, width: 0, height: 50)
