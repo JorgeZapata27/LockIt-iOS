@@ -179,7 +179,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     
     bannerView = GADBannerView(adSize: kGADAdSizeBanner)
     addBannerViewToView(bannerView)
-    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+    bannerView.adUnitID = "ca-app-pub-2433250329496395/9950734721"
     bannerView.rootViewController = self
     bannerView.load(GADRequest())
     bannerView.delegate = self
