@@ -85,6 +85,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         if CheckInternet.Connection() {
             SVProgressHUD.show(withStatus: "Working...")
             posts.removeAll()
+            tableView.reloadData()
             let uid = Auth.auth().currentUser?.uid
             Database.database().reference().child("Users").child(uid!).child("My_Accounts").observe(.childAdded) { (snapshot) in
                 if let value = snapshot.value as? [String : Any] {
