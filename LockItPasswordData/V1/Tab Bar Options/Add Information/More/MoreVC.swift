@@ -318,16 +318,5 @@ class MoreVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         alert.addAction(okay)
         present(alert, animated: true, completion: nil)
     }
-    
-    func createAlert(title: String, message: String)
-    {
-        let alert = UIAlertController(title: "We Have Successfully Added \(title) To Your Added Accounts!", message: message, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Okay!", style: .default, handler: { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
 
 }

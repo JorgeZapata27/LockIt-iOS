@@ -256,6 +256,7 @@ class LSignUpController: UIViewController, UIImagePickerControllerDelegate, UINa
                             Database.database().reference().child("Users").child((user?.user.uid)!).updateChildValues(dict) { (error, ref) in
                                 if error == nil {
                                     print("Done. ")
+                                    UserDefaults.standard.set(true, forKey: "BoolForUserDefaults")
                                     SVProgressHUD.dismiss()
                                     self.navigationController?.pushViewController(LHomeController(), animated: true)
                                 }

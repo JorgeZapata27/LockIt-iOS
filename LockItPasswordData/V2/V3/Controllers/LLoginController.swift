@@ -231,6 +231,7 @@ class LLoginController : UIViewController, UITextFieldDelegate {
 //                  controller.configureNavigationBar()
 //                  self.navigationController?.pushViewController(controller, animated: true)
 //                    self.present(LHomeController(), animated: true, completion: nil)
+                    UserDefaults.standard.set(true, forKey: "BoolForUserDefaults")
                     SVProgressHUD.dismiss()
                     self.navigationController?.pushViewController(LHomeController(), animated: true)
                 } else {

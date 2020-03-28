@@ -159,3 +159,50 @@ extension UITextField {
 protocol LHomeControllerDelegate {
   func handleMenuToggle(forMenuOption menuOption: MenuOption?)
 }
+
+let imageCache = NSCache<NSString, AnyObject>()
+
+extension UIImageView {
+    
+    func loadImageUsingCacheWithUrlString(_ urlString: String) {
+        
+        self.image = nil
+        
+        //check cache for image first
+        if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage {
+            self.image = cachedImage
+            return
+        }
+        
+        //otherwise fire off a new download
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            
+            //download hit an error so lets return out
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            DispatchQueue.main.async(execute: {
+                
+                if let downloadedImage = UIImage(data: data!) {
+                    imageCache.setObject(downloadedImage, forKey: urlString as NSString)
+                    
+                    self.image = downloadedImage
+                }
+            })
+            
+        }).resume()
+    }
+}
+
+extension UIViewController {
+    
+    func createAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+}

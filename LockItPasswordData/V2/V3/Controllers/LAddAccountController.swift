@@ -11,6 +11,8 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     
     var bannerView: GADBannerView!
     
+    var imageSelected = false
+    
   let appImageView : UIImageView = {
     let iv = UIImageView()
     iv.image = UIImage(named: "blank-app")
@@ -101,6 +103,9 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //
+        
         self.appImageView.layer.cornerRadius = 16
         let account = MyVariables.account
         if account != "nil" {
@@ -236,8 +241,10 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let image = info[.editedImage] as? UIImage {
       appImageView.image = image
+        self.imageSelected = true
     } else if let image1 = info[.originalImage] as? UIImage {
       appImageView.image = image1
+        self.imageSelected = true
     }
         
     picker.dismiss(animated: true, completion: nil)
@@ -245,6 +252,7 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
 
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)
+    self.imageSelected = false
   }
 
   // Hides keyboard
@@ -266,54 +274,108 @@ class LAddAccountController : UIViewController, UIImagePickerControllerDelegate,
             }))
             self.present(alertController, animated: true, completion: nil)
         } else {
-            SVProgressHUD.show(withStatus: "Working...")
-            let uid = Auth.auth().currentUser!.uid
-                let ref = Database.database().reference()
-                let storage = Storage.storage().reference()
-                let key = ref.child("Posts").childByAutoId().key
-                let imageRef = storage.child("Posts").child(uid).child("\(key).jpg")
-                let data = self.appImageView.image!.jpegData(compressionQuality: 0.9)
-                databaseRefer = Database.database().reference()
-                let userID = Auth.auth().currentUser!.uid
-                databaseHandle = databaseRefer.child("Users").child(userID).child("name").observe(.value, with: { (data) in
-                    print(String((data.value as? String)!))
-                    let name = "\(String((data.value as? String)!))"
-                })
-                let imageName = NSUUID().uuidString
-                let Storageref = Storage.storage().reference().child("post_images").child("\(imageName).jpg")
-                if let uploadData = data {
-                    Storageref.putData(uploadData, metadata: nil) { (metadata, error) in
-                        if error != nil{
-                            print("Failed to upload image:", error as Any)
-                            return
-                        }
-                        print(Storageref.downloadURL(completion: { (url, err) in
-                            if err != nil{
-                                print(err as Any)
+            if MyVariables.imageFromCustomIcons == true || imageSelected == true {
+                SVProgressHUD.show(withStatus: "Working...")
+                let uid = Auth.auth().currentUser!.uid
+                    let ref = Database.database().reference()
+                    let key = ref.child("Posts").childByAutoId().key
+//                    let imageRef = storage.child("Posts").child(uid).child("\(key).jpg")
+                    let data = self.appImageView.image!.jpegData(compressionQuality: 0.9)
+                    let imageName = NSUUID().uuidString
+                    let Storageref = Storage.storage().reference().child("post_images").child("\(imageName).jpg")
+                    if let uploadData = data {
+                        Storageref.putData(uploadData, metadata: nil) { (metadata, error) in
+                            if error != nil{
+                                print("Failed to upload image:", error as Any)
                                 return
                             }
-                            print("Good")
-                                if let imageUrl = url?.absoluteString {
-                                    print(imageUrl)
-                                                let values = [
-                                                    "postID" : key!,
-                                                    "account-Name" : "\(self.accountNameTF.text!)",
-                                                    "account-Username" : "\(self.accountUsernameTF.text!)",
-                                                    "account-Password" : "\(self.accountPasswordTF.text!)",
-                                                    "account-ImageUrl" : imageUrl] as [String : Any]
-                                                let postFeed = ["\(key!)" : values]
-                                                ref.child("Users").child(uid).child("My_Accounts").updateChildValues(postFeed)
-                                    let alertController = UIAlertController(title: "Success", message: "Your Account Was Added", preferredStyle: .alert)
-                                    alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-                                        MyVariables.account = "nil"
-                                        print(MyVariables.account)
-                                        SVProgressHUD.dismiss()
-                                        self.navigationController?.popViewController(animated: true)
-                                    }))
-                                    self.present(alertController, animated: true, completion: nil)
+                            print(Storageref.downloadURL(completion: { (url, err) in
+                                if err != nil{
+                                    print(err as Any)
+                                    return
                                 }
-                        }))
+                                print("Good")
+                                    if let imageUrl = url?.absoluteString {
+                                        print(imageUrl)
+                                                    let values = [
+                                                        "postID" : key!,
+                                                        "account-Name" : "\(self.accountNameTF.text!)",
+                                                        "account-Username" : "\(self.accountUsernameTF.text!)",
+                                                        "account-Password" : "\(self.accountPasswordTF.text!)",
+                                                        "account-ImageUrl" : imageUrl] as [String : Any]
+                                                    let postFeed = ["\(key!)" : values]
+                                                    ref.child("Users").child(uid).child("My_Accounts").updateChildValues(postFeed)
+                                        let alertController = UIAlertController(title: "Success", message: "Your Account Was Added", preferredStyle: .alert)
+                                        alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                                            MyVariables.account = "nil"
+                                            print(MyVariables.account)
+                                            SVProgressHUD.dismiss()
+                                            self.navigationController?.popViewController(animated: true)
+                                        }))
+                                        self.present(alertController, animated: true, completion: nil)
+                                    }
+                            }))
+                        }
+                }
+            } else {
+                let alertController = UIAlertController(title: "Wait!", message: "You Haven't Selected A Photo For Your Account! Would You Still Like To Advance?", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Advance", style: .default, handler: { (action) in
+                    print("Okay")
+                    alertController.dismiss(animated: true, completion: nil)
+                    SVProgressHUD.show(withStatus: "Working...")
+                    let uid = Auth.auth().currentUser!.uid
+                        let ref = Database.database().reference()
+                        let storage = Storage.storage().reference()
+                        let key = ref.child("Posts").childByAutoId().key
+                        let imageRef = storage.child("Posts").child(uid).child("\(key).jpg")
+                        let data = self.appImageView.image!.jpegData(compressionQuality: 0.9)
+                    self.databaseRefer = Database.database().reference()
+                        let userID = Auth.auth().currentUser!.uid
+                    self.databaseHandle = self.databaseRefer.child("Users").child(userID).child("name").observe(.value, with: { (data) in
+                            print(String((data.value as? String)!))
+                            let name = "\(String((data.value as? String)!))"
+                        })
+                        let imageName = NSUUID().uuidString
+                        let Storageref = Storage.storage().reference().child("post_images").child("\(imageName).jpg")
+                        if let uploadData = data {
+                            Storageref.putData(uploadData, metadata: nil) { (metadata, error) in
+                                if error != nil{
+                                    print("Failed to upload image:", error as Any)
+                                    return
+                                }
+                                print(Storageref.downloadURL(completion: { (url, err) in
+                                    if err != nil{
+                                        print(err as Any)
+                                        return
+                                    }
+                                    print("Good")
+                                        if let imageUrl = url?.absoluteString {
+                                            print(imageUrl)
+                                                        let values = [
+                                                            "postID" : key!,
+                                                            "account-Name" : "\(self.accountNameTF.text!)",
+                                                            "account-Username" : "\(self.accountUsernameTF.text!)",
+                                                            "account-Password" : "\(self.accountPasswordTF.text!)",
+                                                            "account-ImageUrl" : imageUrl] as [String : Any]
+                                                        let postFeed = ["\(key!)" : values]
+                                                        ref.child("Users").child(uid).child("My_Accounts").updateChildValues(postFeed)
+                                            let alertController = UIAlertController(title: "Success", message: "Your Account Was Added", preferredStyle: .alert)
+                                            alertController.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                                                MyVariables.account = "nil"
+                                                print(MyVariables.account)
+                                                SVProgressHUD.dismiss()
+                                                self.navigationController?.popViewController(animated: true)
+                                            }))
+                                            self.present(alertController, animated: true, completion: nil)
+                                        }
+                                }))
+                            }
                     }
+                }))
+                alertController.addAction(UIAlertAction(title: "Go Back", style: .default, handler: { (action) in
+                    alertController.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alertController, animated: true, completion: nil)
             }
         }
         

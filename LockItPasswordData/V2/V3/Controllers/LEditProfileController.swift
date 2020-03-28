@@ -287,7 +287,7 @@ class LEditProfile : UIViewController, UIImagePickerControllerDelegate, UINaviga
         let uid = Auth.auth().currentUser!.uid
         Database.database().reference().child("Users").child(uid).child("profileImageURL").observe(.value, with: { (data) in
             let name : String = (data.value as? String)!
-            self.profileImageView.loadImageUsingCacheWithUrlString(urlString: name)
+            self.profileImageView.loadImageUsingCacheWithUrlString(name)
             debugPrint(name)
         })
         Database.database().reference().child("Users").child(uid).child("email").observe(.value, with: { (data) in

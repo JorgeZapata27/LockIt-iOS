@@ -16,13 +16,6 @@ target 'LockItPasswordData' do
   pod 'SVProgressHUD'
   pod 'Google-Mobile-Ads-SDK'
   pod 'GoogleSignIn'
-
-end
-
-target 'LockItStickerPack' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  # Pods for LockItStickerPack
+  pod 'MHSoftUI'
 
 end

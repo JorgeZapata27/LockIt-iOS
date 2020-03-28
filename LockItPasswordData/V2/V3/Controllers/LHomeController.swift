@@ -78,12 +78,13 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func FirebaseRetrieve() {
+        SVProgressHUD.show(withStatus: "Working...")
         InternetSetup()
+        SVProgressHUD.dismiss()
     }
     
     func InternetSetup() {
         if CheckInternet.Connection() {
-            SVProgressHUD.show(withStatus: "Working...")
             posts.removeAll()
             tableView.reloadData()
             let uid = Auth.auth().currentUser?.uid
@@ -102,7 +103,6 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
                     self.tableView.reloadData()
                 }
             }
-            SVProgressHUD.dismiss()
         } else {
             let alert = UIAlertController(title: "No Connection", message: "Please Be Connected To Internet To Access Your LockIt Accounts", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
@@ -155,7 +155,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
           tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
           tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
           tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-          tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50).isActive = true
+          tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
           tableView.delegate = self
           tableView.dataSource = self
           tableView.register(LHomeControllerCell.self, forCellReuseIdentifier: bandCellID)
@@ -168,7 +168,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: bandCellID, for: indexPath) as! LHomeControllerCell
             let users = posts[indexPath.row]
-            cell.imageViewImage.loadImageUsingCacheWithUrlString(urlString: users.imageURL!)
+            cell.imageViewImage.loadImageUsingCacheWithUrlString(users.imageURL!)
             cell.imageViewImage.contentMode = .scaleAspectFill
             cell.nameLabel.text = users.Name!
             return cell
@@ -178,7 +178,7 @@ class LHomeController : UIViewController, UITableViewDelegate, UITableViewDataSo
         let controller = LEditAccountController() as! LEditAccountController
         controller.username.text = posts[indexPath.row].Username!
         controller.password.text = posts[indexPath.row].Password!
-        controller.imageView.loadImageUsingCacheWithUrlString(urlString: posts[indexPath.row].imageURL!)
+        controller.imageView.loadImageUsingCacheWithUrlString(posts[indexPath.row].imageURL!)
         controller.postId = posts[indexPath.row].postId!
         self.navigationController?.pushViewController(controller, animated: true)
     }

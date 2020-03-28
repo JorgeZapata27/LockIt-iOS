@@ -84,6 +84,7 @@ class LCollectionIcons: UITableViewController, UISearchResultsUpdating {
         if (resultSearchController.isActive) {
             print(filteredTableData[indexPath.row])
             MyVariables.account = "\(filteredTableData[indexPath.row])"
+            MyVariables.imageFromCustomIcons = true
             self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
             let alertController = UIAlertController(title: "\(filteredTableData[indexPath.row])", message: "Is your choice", preferredStyle: .alert)
@@ -92,6 +93,7 @@ class LCollectionIcons: UITableViewController, UISearchResultsUpdating {
             }))
         } else {
             MyVariables.account = "\(sortedAccounts[indexPath.row])"
+            MyVariables.imageFromCustomIcons = true
             self.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: nil)
             print(sortedAccounts[indexPath.row])
