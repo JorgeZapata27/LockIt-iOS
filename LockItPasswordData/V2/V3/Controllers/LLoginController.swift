@@ -140,6 +140,7 @@ class LLoginController : UIViewController, UITextFieldDelegate {
             }
           if let user = Auth.auth().currentUser {
             print("AutoLoginTRUE")
+            print(user.uid)
 
             let context = LAContext()
             var error: NSError?

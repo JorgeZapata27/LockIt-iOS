@@ -26,7 +26,7 @@ class LAuthControllerV4: UIViewController {
             print(user.uid)
             // Move To Main LMainTabbarV4
             let sb = UIStoryboard(name: "NewMain", bundle: nil)
-            let vc: UIViewController = sb.instantiateViewController(withIdentifier: "LMainTabbarV4") as! LMainTabBarControllerV4
+            let vc: UIViewController = sb.instantiateViewController(withIdentifier: "LTouchIdControllerV4") as! LTouchIdController
             UIApplication.shared.keyWindow?.rootViewController = vc
         }
     }

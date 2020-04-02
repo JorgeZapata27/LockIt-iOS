@@ -55,6 +55,9 @@
 		785530BB23A2CFB90038C809 /* NewestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530BA23A2CFB90038C809 /* NewestCell.swift */; };
 		785530BD23A2D4A30038C809 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785530BC23A2D4A30038C809 /* Post.swift */; };
 		78595D6223C3BCC5008EC65A /* LEditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78595D6123C3BCC5008EC65A /* LEditProfileController.swift */; };
+		785DBE512434B31000A58A62 /* LAccountControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785DBE502434B31000A58A62 /* LAccountControllerV4.swift */; };
+		785DBE7F243652F000A58A62 /* LTouchIdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785DBE7E243652F000A58A62 /* LTouchIdController.swift */; };
+		785E645C2430D06F00F2BC2B /* LAddAccountControllerV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785E645B2430D06F00F2BC2B /* LAddAccountControllerV4.swift */; };
 		78658AB723CB961A00C7DF90 /* LChangePhoneNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78658AB623CB961A00C7DF90 /* LChangePhoneNumberController.swift */; };
 		78658AB923CB968600C7DF90 /* LChangeCountryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78658AB823CB968600C7DF90 /* LChangeCountryController.swift */; };
 		7866C1E5234A66B10075189A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7866C1E4234A66B10075189A /* TableViewController.swift */; };
@@ -170,6 +173,9 @@
 		785530BA23A2CFB90038C809 /* NewestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestCell.swift; sourceTree = "<group>"; };
 		785530BC23A2D4A30038C809 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		78595D6123C3BCC5008EC65A /* LEditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEditProfileController.swift; sourceTree = "<group>"; };
+		785DBE502434B31000A58A62 /* LAccountControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAccountControllerV4.swift; sourceTree = "<group>"; };
+		785DBE7E243652F000A58A62 /* LTouchIdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTouchIdController.swift; sourceTree = "<group>"; };
+		785E645B2430D06F00F2BC2B /* LAddAccountControllerV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAddAccountControllerV4.swift; sourceTree = "<group>"; };
 		78658AB623CB961A00C7DF90 /* LChangePhoneNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LChangePhoneNumberController.swift; sourceTree = "<group>"; };
 		78658AB823CB968600C7DF90 /* LChangeCountryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LChangeCountryController.swift; sourceTree = "<group>"; };
 		7866C1E4234A66B10075189A /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -629,6 +635,7 @@
 				7814B7AC242F513E00562D76 /* LAuthControllerV4.swift */,
 				7814B7AE242F539D00562D76 /* LSignInControllerV4.swift */,
 				7814B7B0242F564C00562D76 /* LSignUpControllerV4.swift */,
+				785DBE7E243652F000A58A62 /* LTouchIdController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -664,6 +671,8 @@
 			children = (
 				78D0E681242FD0E700200347 /* LAccountsControllerV4.swift */,
 				78D0E683242FD1B400200347 /* LAccountControllerCellV4.swift */,
+				785E645B2430D06F00F2BC2B /* LAddAccountControllerV4.swift */,
+				785DBE502434B31000A58A62 /* LAccountControllerV4.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -865,6 +874,7 @@
 				789C996D23CA1A26004ABF3A /* LChangeEmailControllerrrr.swift in Sources */,
 				782E5EA822A0940D00F1456B /* AddedAccountsCell.swift in Sources */,
 				78ADEAF823E9D8A10057A769 /* SwipingController+extension.swift in Sources */,
+				785DBE7F243652F000A58A62 /* LTouchIdController.swift in Sources */,
 				78BC7D19230AD153003A07A5 /* Interest.swift in Sources */,
 				78265B4323C1138700054C12 /* LLoginController.swift in Sources */,
 				7814B7AF242F539D00562D76 /* LSignInControllerV4.swift in Sources */,
@@ -896,12 +906,14 @@
 				78265B3823C1126300054C12 /* LMenuOptionCell.swift in Sources */,
 				782E5EBC22A426B200F1456B /* Continue.swift in Sources */,
 				789E7A3E2294222700650475 /* BankAccount.swift in Sources */,
+				785DBE512434B31000A58A62 /* LAccountControllerV4.swift in Sources */,
 				78E836E523CE1B9E00BB74C3 /* BandCell.swift in Sources */,
 				78D0E67C242FA95F00200347 /* LSettingsControllerV4.swift in Sources */,
 				78265B2F23C0DC3C00054C12 /* LContainerController.swift in Sources */,
 				7890B03623AAA9D00081679C /* LSignUpController.swift in Sources */,
 				7829EDB023A36C8400CC56DE /* UserService.swift in Sources */,
 				78ADDCCC227A4D4100AC0FCD /* Defaults.swift in Sources */,
+				785E645C2430D06F00F2BC2B /* LAddAccountControllerV4.swift in Sources */,
 				782E5EA322A08C8F00F1456B /* AddedAccounts.swift in Sources */,
 				785530B523A2BB020038C809 /* V3TblVCAccounts.swift in Sources */,
 				78D0E684242FD1B400200347 /* LAccountControllerCellV4.swift in Sources */,

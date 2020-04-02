@@ -12,6 +12,7 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import SVProgressHUD
 
 class LSettingsControllerV4: UIViewController, UITextFieldDelegate {
     
@@ -55,6 +56,7 @@ class LSettingsControllerV4: UIViewController, UITextFieldDelegate {
     }
     
     func GetInformationFromFirebase() {
+        SVProgressHUD.show(withStatus: "Working...")
         Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid).child("profileImageURL").observe(.value, with: { (data) in
             let name : String = (data.value as? String)!
             self.profileImageView.loadImageUsingCacheWithUrlString(name)
@@ -74,6 +76,7 @@ class LSettingsControllerV4: UIViewController, UITextFieldDelegate {
                             let qqqq : String = (data.value as? String)!
                             self.countryLabel.text = qqqq
                             debugPrint(qqqq)
+                            SVProgressHUD.dismiss()
                             self.CheckForEmptyInformation()
                         })
                     })
